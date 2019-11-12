@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEF7E1"
+    android:orientation="vertical"
+    tools:context=".fragment.HomeScreen">
+
+        <TextView
+            android:id="@+id/pearls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="40dp"
+            android:text="Pearls"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/quanity_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup" />
+
+    <TextView
+        android:id="@+id/favors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:text="Flavors"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/favors3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:text="Size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flavor_spinner" />
+
+        <TextView
+            android:id="@+id/favors4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp"
+            android:text="Sweetness"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" />
+
+        <TextView
+            android:id="@+id/favors6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:text="Temperture"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sweetness_radioGroup" />
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:text="Quantity"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup" />
+
+    <Spinner
+        android:id="@+id/flavor_spinner"
+        android:layout_width="158dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/favors"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+            android:id="@+id/size_radioGroup"
+            android:layout_width="301dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/favors3"
+            app:layout_constraintTop_toBottomOf="@+id/flavor_spinner" />
+
+        <RadioGroup
+            android:id="@+id/sweetness_radioGroup"
+            android:layout_width="298dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/favors4"
+            app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" />
+
+        <RadioGroup
+            android:id="@+id/temp_radioGroup"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/favors6"
+            app:layout_constraintTop_toBottomOf="@+id/sweetness_radioGroup">
+
+        </RadioGroup>
+
+        <Spinner
+            android:id="@+id/quanity_spinner"
+            android:layout_width="54dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/quantity"
+            app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup" />
+
+        <Spinner
+            android:id="@+id/pearls_spinner"
+            android:layout_width="79dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/pearls"
+            app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup" />
+
+        <TextView
+            android:id="@+id/item_total_textview"
+            android:layout_width="161dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:text="Total"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quanity_spinner" />
+
+        <TextView
+            android:id="@+id/date_time_textview"
+            android:layout_width="161dp"
+            android:layout_height="33dp"
+            android:text="date and time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_total_textview" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="129dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="#705F5C"
+            android:text="ADD"
+            android:textColor="#EF8E7D"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_time_textview" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="216dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="#705F5C"
+            android:text="CHECKOUT"
+            android:textColor="#EF8E7D"
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/date_time_textview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

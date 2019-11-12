@@ -1,0 +1,49 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:theme="@style/Theme.Design.NoActionBar"
+    >
+
+    <TextView
+        android:id="@+id/checkout_item_textview"
+        android:layout_width="305dp"
+        android:layout_height="32dp"
+        android:text="TextView"
+        android:textColor="#F3ECEC"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/edit_checkout_item_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/edit_checkout_item_button"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:scaleType="fitStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/path2158" />
+
+    <ImageButton
+        android:id="@+id/favorite_checkout_item_button"
+        android:layout_width="32dp"
+        android:layout_height="31dp"
+        android:scaleType="fitEnd"
+        app:layout_constraintStart_toEndOf="@+id/checkout_item_textview"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fav" />
+
+    <ImageButton
+        android:id="@+id/discard_checkout_item_button"
+        android:layout_width="33dp"
+        android:layout_height="32dp"
+        android:scaleType="fitEnd"
+        app:layout_constraintStart_toEndOf="@+id/favorite_checkout_item_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/trash" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

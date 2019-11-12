@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeScreen">
+
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.example.aplustea.fragment.HomeScreen"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreen_to_orderScreen"
+            app:destination="@id/orderScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_accountScreen"
+            app:destination="@id/accountScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderScreen"
+        android:name="com.example.aplustea.fragment.OrderScreen"
+        android:label="fragment_order_screen"
+        tools:layout="@layout/fragment_order_screen" >
+        <action
+            android:id="@+id/action_orderScreen_to_loginScreen"
+            app:destination="@id/loginScreen" />
+        <action
+            android:id="@+id/action_orderScreen_to_cartScreen"
+            app:destination="@id/cartScreen" />
+        <action
+            android:id="@+id/action_orderScreen_to_accountScreen"
+            app:destination="@id/accountScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingScreen"
+        android:name="com.example.aplustea.fragment.LoadingScreen"
+        android:label="fragment_loading_screen"
+        tools:layout="@layout/fragment_loading_screen" >
+        <action
+            android:id="@+id/action_loadingScreen_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartScreen"
+        android:name="com.example.aplustea.fragment.CartScreen"
+        android:label="fragment_cart_screen"
+        tools:layout="@layout/fragment_cart_screen" />
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="com.example.aplustea.fragment.LoginScreen"
+        android:label="fragment_login_screen"
+        tools:layout="@layout/fragment_login_screen" >
+        <action
+            android:id="@+id/action_loginScreen_to_cartScreen"
+            app:destination="@id/cartScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountScreen"
+        android:name="com.example.aplustea.fragment.AccountScreen"
+        android:label="fragment_account_screen"
+        tools:layout="@layout/fragment_account_screen" >
+        <action
+            android:id="@+id/action_accountScreen_to_savedScreen"
+            app:destination="@id/savedScreen" />
+        <action
+            android:id="@+id/action_accountScreen_to_favoritesScreen"
+            app:destination="@id/favoritesScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedScreen"
+        android:name="com.example.aplustea.fragment.SavedScreen"
+        android:label="fragment_saved_screen"
+        tools:layout="@layout/fragment_saved_screen" >
+        <action
+            android:id="@+id/action_savedScreen_to_orderScreen"
+            app:destination="@id/orderScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesScreen"
+        android:name="com.example.aplustea.fragment.FavoritesScreen"
+        android:label="fragment_favorites_screen"
+        tools:layout="@layout/fragment_favorites_screen" >
+        <action
+            android:id="@+id/action_favoritesScreen_to_orderScreen"
+            app:destination="@id/orderScreen" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_accountScreen"
+        app:destination="@id/accountScreen"
+        app:popUpTo="@id/accountScreen"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_favoritesScreen"
+        app:destination="@id/favoritesScreen"
+        app:popUpTo="@id/favoritesScreen"
+        app:popUpToInclusive="true" >
+        <action
+            android:id="@+id/action_action_global_favoritesScreen_to_savedScreen"
+            app:destination="@id/savedScreen"
+            app:popUpTo="@id/savedScreen"
+            app:popUpToInclusive="true" />
+    </action>
+</navigation>

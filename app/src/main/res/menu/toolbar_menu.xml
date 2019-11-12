@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_profileScreen"
+        android:title="Profile"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_savedScreen"
+        android:title="Saved Orders"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/action_favoritesScreen"
+        android:title="Favorites"
+        app:showAsAction="withText" />
+
+</menu>
