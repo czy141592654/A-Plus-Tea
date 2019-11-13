@@ -7,13 +7,13 @@
     android:orientation="vertical"
     tools:context=".mainActivity.MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <androidx.appcompat.widget.Toolbxar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="#EF8E7D">
 
-    </androidx.appcompat.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbxar>
 
 
     <fragment
