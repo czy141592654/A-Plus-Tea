@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.aplustea.R
 import java.lang.Exception
 
+// this is all for the loading screen
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

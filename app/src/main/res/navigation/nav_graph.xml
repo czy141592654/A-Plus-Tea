@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeScreen_to_accountScreen"
             app:destination="@id/accountScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_menuScreen"
+            app:destination="@id/menuScreen" />
     </fragment>
     <fragment
         android:id="@+id/orderScreen"
@@ -31,15 +34,6 @@
         <action
             android:id="@+id/action_orderScreen_to_accountScreen"
             app:destination="@id/accountScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/loadingScreen"
-        android:name="com.example.aplustea.fragment.LoadingScreen"
-        android:label="fragment_loading_screen"
-        tools:layout="@layout/fragment_loading_screen" >
-        <action
-            android:id="@+id/action_loadingScreen_to_homeScreen"
-            app:destination="@id/homeScreen" />
     </fragment>
     <fragment
         android:id="@+id/cartScreen"
@@ -101,4 +95,9 @@
             app:popUpTo="@id/savedScreen"
             app:popUpToInclusive="true" />
     </action>
+    <fragment
+        android:id="@+id/menuScreen"
+        android:name="com.example.aplustea.fragment.MenuScreen"
+        android:label="fragment_menu_screen"
+        tools:layout="@layout/fragment_menu_screen" />
 </navigation>
