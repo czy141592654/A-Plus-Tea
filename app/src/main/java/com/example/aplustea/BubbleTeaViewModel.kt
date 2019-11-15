@@ -6,8 +6,10 @@ import androidx.lifecycle.MutableLiveData
 
 class BubbleTeaViewModel(application: Application): AndroidViewModel(application){
     var bubbleTeaType = MutableLiveData<String>()
+    var sweetness = MutableLiveData<String>()
 
     init {
         bubbleTeaType.value = ""
+
     }
 }
