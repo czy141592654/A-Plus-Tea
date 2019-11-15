@@ -11,9 +11,6 @@
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" >
         <action
-            android:id="@+id/action_homeScreen_to_orderScreen"
-            app:destination="@id/orderScreen" />
-        <action
             android:id="@+id/action_homeScreen_to_accountScreen"
             app:destination="@id/accountScreen" />
         <action
@@ -39,7 +36,11 @@
         android:id="@+id/cartScreen"
         android:name="com.example.aplustea.fragment.CartScreen"
         android:label="fragment_cart_screen"
-        tools:layout="@layout/fragment_cart_screen" />
+        tools:layout="@layout/fragment_cart_screen" >
+        <action
+            android:id="@+id/action_cartScreen_to_confirmedOrder"
+            app:destination="@id/confirmedOrder" />
+    </fragment>
     <fragment
         android:id="@+id/loginScreen"
         android:name="com.example.aplustea.fragment.LoginScreen"
@@ -55,20 +56,14 @@
         android:label="fragment_account_screen"
         tools:layout="@layout/fragment_account_screen" >
         <action
-            android:id="@+id/action_accountScreen_to_savedScreen"
-            app:destination="@id/savedScreen" />
-        <action
             android:id="@+id/action_accountScreen_to_favoritesScreen"
             app:destination="@id/favoritesScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/savedScreen"
-        android:name="com.example.aplustea.fragment.SavedScreen"
-        android:label="fragment_saved_screen"
-        tools:layout="@layout/fragment_saved_screen" >
         <action
-            android:id="@+id/action_savedScreen_to_orderScreen"
-            app:destination="@id/orderScreen" />
+            android:id="@+id/action_accountScreen_to_ownerScreen"
+            app:destination="@id/ownerScreen" />
+        <action
+            android:id="@+id/action_accountScreen_to_previousOrdersScreen"
+            app:destination="@id/previousOrdersScreen" />
     </fragment>
     <fragment
         android:id="@+id/favoritesScreen"
@@ -88,13 +83,7 @@
         android:id="@+id/action_global_favoritesScreen"
         app:destination="@id/favoritesScreen"
         app:popUpTo="@id/favoritesScreen"
-        app:popUpToInclusive="true" >
-        <action
-            android:id="@+id/action_action_global_favoritesScreen_to_savedScreen"
-            app:destination="@id/savedScreen"
-            app:popUpTo="@id/savedScreen"
-            app:popUpToInclusive="true" />
-    </action>
+        app:popUpToInclusive="true" />
     <fragment
         android:id="@+id/menuScreen"
         android:name="com.example.aplustea.fragment.MenuScreen"
@@ -104,4 +93,70 @@
             android:id="@+id/action_menuScreen_to_orderScreen"
             app:destination="@id/orderScreen" />
     </fragment>
+    <fragment
+        android:id="@+id/ownerScreen"
+        android:name="com.example.aplustea.fragment.OwnerScreen"
+        android:label="fragment_owner_screen"
+        tools:layout="@layout/fragment_owner_screen" >
+        <action
+            android:id="@+id/action_ownerScreen_to_clearOrdersConfirm"
+            app:destination="@id/clearOrdersConfirm" />
+        <action
+            android:id="@+id/action_ownerScreen_to_ownerOrderDetailScreen"
+            app:destination="@id/ownerOrderDetailScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/clearOrdersConfirm"
+        android:name="com.example.aplustea.fragment.ClearOrdersConfirm"
+        android:label="fragment_clear_orders_confirm"
+        tools:layout="@layout/fragment_clear_orders_confirm" >
+        <action
+            android:id="@+id/action_clearOrdersConfirm_to_ownerScreen"
+            app:destination="@id/ownerScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/previousOrdersScreen"
+        android:name="com.example.aplustea.fragment.PreviousOrdersScreen"
+        android:label="fragment_previous_orders_screen"
+        tools:layout="@layout/fragment_previous_orders_screen" >
+        <action
+            android:id="@+id/action_previousOrdersScreen_to_orderScreen"
+            app:destination="@id/orderScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/ownerOrderDetailScreen"
+        android:name="com.example.aplustea.fragment.OwnerOrderDetailScreen"
+        android:label="fragment_owner_order_detail_screen"
+        tools:layout="@layout/fragment_owner_order_detail_screen" >
+        <action
+            android:id="@+id/action_ownerOrderDetailScreen_to_ownerScreen"
+            app:destination="@id/ownerScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmedOrder"
+        android:name="com.example.aplustea.fragment.ConfirmedOrder"
+        android:label="fragment_confirmed_order"
+        tools:layout="@layout/fragment_confirmed_order" >
+        <action
+            android:id="@+id/action_confirmedOrder_to_homeScreen"
+            app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_confirmedOrder_to_cancelOrder"
+            app:destination="@id/cancelOrder" />
+    </fragment>
+    <fragment
+        android:id="@+id/cancelOrder"
+        android:name="com.example.aplustea.fragment.CancelOrder"
+        android:label="fragment_cancel_order"
+        tools:layout="@layout/fragment_cancel_order" />
+    <fragment
+        android:id="@+id/cancelConfirmed"
+        android:name="com.example.aplustea.fragment.CancelConfirmed"
+        android:label="fragment_cancel_confirmed"
+        tools:layout="@layout/fragment_cancel_confirmed" />
+    <action
+        android:id="@+id/action_global_previousOrdersScreen"
+        app:destination="@id/previousOrdersScreen"
+        app:popUpTo="@id/previousOrdersScreen"
+        app:popUpToInclusive="true" />
 </navigation>

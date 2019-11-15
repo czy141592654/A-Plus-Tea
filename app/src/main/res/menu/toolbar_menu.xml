@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_profileScreen"
-        android:title="Profile"
+        android:id="@+id/action_accountScreen"
+        android:icon="@drawable/profile"
+        android:title="Account"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_savedScreen"
-        android:title="Saved Orders"
+        android:id="@+id/action_previousScreen"
+        android:title="Previous Orders"
         app:showAsAction="withText" />
     <item
         android:id="@+id/action_favoritesScreen"

@@ -6,33 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
-import com.example.aplustea.BubbleTeaViewModel
 import com.example.aplustea.R
-import java.lang.Exception
 
 /**
  * A simple [Fragment] subclass.
  */
 class OrderScreen : Fragment() {
-    lateinit var bubbleTeaViewModel: BubbleTeaViewModel
-    var sweetness = arrayOf("None","Medium","Very")
-    var Size = arrayOf("Small", "Medium", "Large")
-    var temperature = arrayOf("Cold", "Hot")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        bubbleTeaViewModel = activity?.run {
-            ViewModelProviders.of(this).get(BubbleTeaViewModel::class.java)
-        }?:throw Exception("activity invalid")
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_order_screen, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
     }
 
 

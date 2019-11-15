@@ -13,14 +13,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         setSupportActionBar(findViewById(R.id.toolbar))
 
-//        val navController = findNavController(R.id.nav_host_frag)
-//        toolbar.setupWithNavController(navController)
-
+        val navController = findNavController(R.id.nav_host_frag)
+        toolbar.setupWithNavController(navController)
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
@@ -29,7 +28,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return super.onOptionsItemSelected(item)
+
+        when (item?.itemId) {
+            R.id.action_accountScreen -> findNavController(R.id.nav_host_frag).navigate(R.id.action_global_accountScreen)
+        }
+        when (item?.itemId) {
+            R.id.action_favoritesScreen -> findNavController(R.id.nav_host_frag).navigate(R.id.action_global_favoritesScreen)
+        }
+        when (item?.itemId) {
+            R.id.action_previousScreen -> findNavController(R.id.nav_host_frag).navigate(R.id.action_global_previousOrdersScreen)
+        }
+        return true
+
     }
 
 }
