@@ -5,13 +5,12 @@
     android:layout_height="match_parent"
     android:background="#FEF7E1"
     android:orientation="vertical"
-    tools:context=".fragment.PreviousOrdersScreen">
+    tools:context=".fragment.FavoritesScreen">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/modak"
         android:text="Tap Favorite to re-order."
         android:textColor="#EF8E7D"
         android:textSize="22sp"

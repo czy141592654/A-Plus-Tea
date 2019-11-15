@@ -5,20 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FEF7E1"
+
     android:orientation="vertical"
     tools:context=".fragment.HomeScreen">
 
-        <TextView
-            android:id="@+id/pearls"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="40dp"
-            android:text="Pearls"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/quanity_spinner"
-            app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup" />
+    <TextView
+        android:id="@+id/pearls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Pearls"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/favors"
@@ -93,18 +96,45 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/favors3"
-            app:layout_constraintTop_toBottomOf="@+id/flavor_spinner" />
+        android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/flavor_spinner" >
 
-        <RadioGroup
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Regular" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Large"
+                android:layout_marginLeft="55dp"/>
+
+    </RadioGroup>
+
+    <RadioGroup
             android:id="@+id/sweetness_radioGroup"
             android:layout_width="298dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/favors4"
-            app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regular"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Very"
+            android:layout_marginLeft="50dp">
+        </RadioButton>
+
+
+    </RadioGroup>
 
         <RadioGroup
             android:id="@+id/temp_radioGroup"
@@ -114,21 +144,25 @@
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
+            android:orientation="horizontal"
             app:layout_constraintStart_toEndOf="@+id/favors6"
             app:layout_constraintTop_toBottomOf="@+id/sweetness_radioGroup">
 
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cold" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hot"
+                android:layout_marginLeft="70dp">
+
+            </RadioButton>
+
         </RadioGroup>
 
-        <Spinner
-            android:id="@+id/quanity_spinner"
-            android:layout_width="54dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintStart_toEndOf="@+id/quantity"
-            app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup" />
-
-        <Spinner
+    <Spinner
             android:id="@+id/pearls_spinner"
             android:layout_width="79dp"
             android:layout_height="51dp"
@@ -137,47 +171,63 @@
             app:layout_constraintStart_toEndOf="@+id/pearls"
             app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup" />
 
-        <TextView
-            android:id="@+id/item_total_textview"
-            android:layout_width="161dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="24dp"
-            android:text="Total"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quanity_spinner" />
+    <TextView
+        android:id="@+id/item_total_textview"
+        android:layout_width="204dp"
+        android:layout_height="81dp"
+        android:layout_marginBottom="268dp"
+        android:text="Total"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
-        <TextView
-            android:id="@+id/date_time_textview"
-            android:layout_width="161dp"
-            android:layout_height="33dp"
-            android:text="date and time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_total_textview" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="129dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="20dp"
+        android:backgroundTint="#705F5C"
+        android:text="ADD"
+        android:textColor="#EF8E7D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.747" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="129dp"
-            android:layout_height="61dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="28dp"
-            android:backgroundTint="#705F5C"
-            android:text="ADD"
-            android:textColor="#EF8E7D"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date_time_textview" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="216dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="28dp"
+        android:backgroundTint="#705F5C"
+        android:text="CHECKOUT"
+        android:textColor="#EF8E7D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.747" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="216dp"
-            android:layout_height="61dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="28dp"
-            android:backgroundTint="#705F5C"
-            android:text="CHECKOUT"
-            android:textColor="#EF8E7D"
-            app:layout_constraintStart_toEndOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/date_time_textview" />
+    <EditText
+        android:id="@+id/quantity_editText"
+        android:layout_width="141dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="put number here"
+        android:inputType="textPersonName"
+
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.437" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

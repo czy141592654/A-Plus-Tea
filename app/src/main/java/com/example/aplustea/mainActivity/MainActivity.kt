@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
+        setSupportActionBar(findViewById(R.id.myToolbar))
 
         val navController = findNavController(R.id.nav_host_frag)
-        toolbar.setupWithNavController(navController)
+        myToolbar.setupWithNavController(navController)
     }
 
 
