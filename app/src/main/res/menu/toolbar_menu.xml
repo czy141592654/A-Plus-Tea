@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_accountScreen"
+        android:id="@+id/accountScreen_item"
         android:icon="@drawable/profile"
         android:title="Account"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_previousScreen"
+        android:id="@+id/previousScreen_item"
         android:title="Previous Orders"
         app:showAsAction="withText" />
     <item
-        android:id="@+id/action_favoritesScreen"
+        android:id="@+id/favoritesScreen_item"
         android:title="Favorites"
         app:showAsAction="withText" />
 
