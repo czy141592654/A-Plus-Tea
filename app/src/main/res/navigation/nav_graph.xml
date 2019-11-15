@@ -99,5 +99,9 @@
         android:id="@+id/menuScreen"
         android:name="com.example.aplustea.fragment.MenuScreen"
         android:label="fragment_menu_screen"
-        tools:layout="@layout/fragment_menu_screen" />
+        tools:layout="@layout/fragment_menu_screen" >
+        <action
+            android:id="@+id/action_menuScreen_to_orderScreen"
+            app:destination="@id/orderScreen" />
+    </fragment>
 </navigation>

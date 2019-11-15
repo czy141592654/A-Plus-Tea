@@ -4,15 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aplustea.MenuItem
+import com.example.aplustea.Item
 import com.example.aplustea.R
-import kotlinx.android.synthetic.main.fragment_home_screen.view.*
 import kotlinx.android.synthetic.main.menu_item.view.*
 
-class RecyclerViewAdapter_Menu(
-    var menuItem: ArrayList<MenuItem>,
-    val clickListener: (MenuItem) -> Unit
-) : RecyclerView.Adapter<RecyclerViewAdapter_Menu.RecyclerViewHolder>() {
+class RecyclerViewAdapterMenu(
+    var menu_array: ArrayList<Item>,
+    val clickListener: (Item) -> Unit
+) : RecyclerView.Adapter<RecyclerViewAdapterMenu.RecyclerViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -24,17 +23,17 @@ class RecyclerViewAdapter_Menu(
     }
 
     override fun getItemCount(): Int {
-        return menuItem.size
+        return menu_array.size
     }
 
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        holder.bind(menuItem[position], clickListener)
+        holder.bind(menu_array[position], clickListener)
     }
 
     inner class RecyclerViewHolder(var viewItem: View) : RecyclerView.ViewHolder(viewItem) {
 
-        fun bind(item: MenuItem, clickListener: (MenuItem) -> Unit) {
+        fun bind(item: Item, clickListener: (Item) -> Unit) {
             viewItem.menuItem.setBackgroundResource(item.backGround)
             viewItem.menuItem.text = item.name
 
