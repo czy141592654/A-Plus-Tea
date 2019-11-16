@@ -41,7 +41,7 @@ class MenuScreen : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        itemArray.add(Item(R.drawable.original_flavor,"Original Flavor"))
+        itemArray.add(Item(R.drawable.original_flavor,"Original Flavor",3.0))
 
         viewAdapter = RecyclerViewAdapterMenu(itemArray) { menuitem:Item ->
             recyclerViewItemSelected(menuitem)
@@ -57,6 +57,8 @@ class MenuScreen : Fragment() {
 
     fun recyclerViewItemSelected(menuItem: Item){
         bubbleTeaViewModel.bubbleTeaType.value = menuItem.name
+        bubbleTeaViewModel.bubbleTeaTypePicture.value = menuItem.backGround
+        bubbleTeaViewModel.bubbleTeaPrice.value = menuItem.price
         findNavController().navigate(R.id.action_menuScreen_to_orderScreen)
     }
 

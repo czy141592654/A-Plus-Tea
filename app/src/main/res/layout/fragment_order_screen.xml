@@ -13,221 +13,225 @@
         android:id="@+id/pearls"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="Pearls"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.742" />
 
     <TextView
-        android:id="@+id/favors"
+        android:id="@+id/favors3"
+        android:layout_width="45dp"
+        android:layout_height="39dp"
+        android:text="Size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/size_radioGroup"
+        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.284" />
+
+    <TextView
+        android:id="@+id/favors4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="36dp"
-        android:text="Flavors"
+        android:text="Sweetness"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.383" />
+
+    <TextView
+        android:id="@+id/favors6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperture"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/favors3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="36dp"
-            android:text="Size"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flavor_spinner" />
-
-        <TextView
-            android:id="@+id/favors4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
-            android:text="Sweetness"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" />
-
-        <TextView
-            android:id="@+id/favors6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
-            android:text="Temperture"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sweetness_radioGroup" />
-
-        <TextView
-            android:id="@+id/quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
-            android:text="Quantity"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup" />
-
-    <Spinner
-        android:id="@+id/flavor_spinner"
-        android:layout_width="158dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/favors"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.603" />
 
     <RadioGroup
-            android:id="@+id/size_radioGroup"
-            android:layout_width="301dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/favors3"
-        android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/flavor_spinner" >
+        android:id="@+id/size_radioGroup"
+        android:layout_width="277dp"
+        android:layout_height="46dp"
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Regular" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Large"
-                android:layout_marginLeft="55dp"/>
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.287">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regular" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:text="Large" />
 
     </RadioGroup>
 
     <RadioGroup
-            android:id="@+id/sweetness_radioGroup"
-            android:layout_width="298dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
+        android:id="@+id/sweetness_radioGroup"
+        android:layout_width="252dp"
+        android:layout_height="52dp"
         android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/favors4"
-            app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382">
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Regular"/>
+            android:text="Regular" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Very"
-            android:layout_marginLeft="50dp">
+            android:layout_marginLeft="50dp"
+            android:text="Very">
+
         </RadioButton>
 
 
     </RadioGroup>
 
-        <RadioGroup
-            android:id="@+id/temp_radioGroup"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/favors6"
-            app:layout_constraintTop_toBottomOf="@+id/sweetness_radioGroup">
+    <RadioGroup
+        android:id="@+id/temperature_radioGroup"
+        android:layout_width="261dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cold" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hot"
-                android:layout_marginLeft="70dp">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cold" />
 
-            </RadioButton>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:text="Hot">
 
-        </RadioGroup>
+        </RadioButton>
+
+    </RadioGroup>
 
     <Spinner
-            android:id="@+id/pearls_spinner"
-            android:layout_width="79dp"
-            android:layout_height="51dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintStart_toEndOf="@+id/pearls"
-            app:layout_constraintTop_toBottomOf="@+id/temp_radioGroup" />
+        android:id="@+id/pearls_spinner"
+        android:layout_width="152dp"
+        android:layout_height="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.758" />
 
     <TextView
         android:id="@+id/item_total_textview"
-        android:layout_width="204dp"
-        android:layout_height="81dp"
-        android:layout_marginBottom="268dp"
-        android:text="Total"
+        android:layout_width="271dp"
+        android:layout_height="43dp"
+        android:gravity="center"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.337"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.857" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="129dp"
         android:layout_height="61dp"
-        android:layout_marginStart="20dp"
         android:backgroundTint="#705F5C"
         android:text="ADD"
         android:textColor="#EF8E7D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.747" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="216dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="28dp"
+        android:layout_width="158dp"
+        android:layout_height="62dp"
         android:backgroundTint="#705F5C"
         android:text="CHECKOUT"
         android:textColor="#EF8E7D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.747" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/quantity_editText"
         android:layout_width="141dp"
         android:layout_height="40dp"
         android:ems="10"
-        android:hint="put number here"
-        android:inputType="textPersonName"
+        android:inputType="number"
+
+        android:text="0"
 
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.676"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+
+        app:layout_constraintVertical_bias="0.607" />
+
+    <ImageView
+        android:id="@+id/bubbleTeaView"
+        android:layout_width="359dp"
+        android:layout_height="142dp"
+        android:src="@drawable/original_flavor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/temperature_radioGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
