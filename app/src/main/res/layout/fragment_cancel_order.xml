@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEF7E1"
+    android:orientation="vertical"
+    tools:context=".fragment.CancelOrder">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/modak"
+        android:text="Are you sure you want to cancel your order?"
+        android:textColor="#EF8E7D"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/yes_button"
+        android:layout_width="332dp"
+        android:layout_height="66dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#705F5C"
+        android:text="YES"
+        android:textColor="#EF8E7D" />
+
+    <Button
+        android:id="@+id/no_button"
+        android:layout_width="332dp"
+        android:layout_height="66dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#705F5C"
+        android:text="NO"
+        android:textColor="#EF8E7D" />
+
+</LinearLayout>
