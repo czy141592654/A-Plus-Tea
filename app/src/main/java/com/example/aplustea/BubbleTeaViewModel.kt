@@ -6,17 +6,23 @@ import androidx.lifecycle.MutableLiveData
 
 class BubbleTeaViewModel(application: Application): AndroidViewModel(application){
     var bubbleTeaType = MutableLiveData<String>()
-    var sweetnessSpinnerPosition = MutableLiveData<Int>()
-    var temperatureSpinnerPosition = MutableLiveData<Int>()
+    var sweetnessRadioGroupID = MutableLiveData<Int>()
+    var temperatureRadioGroupID = MutableLiveData<Int>()
     var pearlsSpinnerPosition = MutableLiveData<Int>()
-    var qtyString = MutableLiveData<String>()
+    var quantityString = MutableLiveData<String>()
+    var sizeRadioGroupID = MutableLiveData<Int>()
+    var bubbleTeaTypePicture = MutableLiveData<Int>()
+    var bubbleTeaPrice = MutableLiveData<Double>()
 
     init {
         bubbleTeaType.value = ""
-        sweetnessSpinnerPosition.value = 0
-        temperatureSpinnerPosition.value = 0
+        sweetnessRadioGroupID.value = 0
+        temperatureRadioGroupID.value = 0
         pearlsSpinnerPosition.value = 0
-        qtyString.value = ""
+        quantityString.value = ""
+        sizeRadioGroupID.value = 0
+        bubbleTeaTypePicture.value = 0
+        bubbleTeaPrice.value = 0.0
 
     }
 }
