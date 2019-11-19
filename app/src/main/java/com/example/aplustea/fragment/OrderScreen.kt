@@ -56,6 +56,7 @@ class OrderScreen : Fragment() {
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         // adapter for spinner
         val pearlsAdapter =
             ArrayAdapter(context!!, android.R.layout.simple_spinner_dropdown_item, pearlsTypes)
@@ -123,7 +124,7 @@ class OrderScreen : Fragment() {
                     duplicates = true
                 }
             }
-            if (duplicates == false) {
+            if (duplicates == false && quantity_editText.text.toString() != "") {
                 var currentPrice = bubbleTeaViewModel.totalPrice.value!!
                 bubbleTeaViewModel.totalPrice.value =
                     currentPrice + quantity_editText.text.toString().toDouble() * bubbleTeaViewModel.bubbleTeaUnitPrice.value!!
@@ -146,13 +147,17 @@ class OrderScreen : Fragment() {
                     duplicates = true
                 }
             }
-            if (duplicates == false) {
+            if (duplicates == false && quantity_editText.text.toString() != "") {
                 var currentPrice = bubbleTeaViewModel.totalPrice.value!!
                 bubbleTeaViewModel.totalPrice.value =
                     currentPrice + quantity_editText.text.toString().toDouble() * bubbleTeaViewModel.bubbleTeaUnitPrice.value!!
                 bubbleTeaViewModel.cartScreenItem.value!!.add(cartScreenItem)
             }
             findNavController().navigate(R.id.action_orderScreen_to_cartScreen)
+            quantity_editText.text.clear()
+            sweetness_radioGroup.clearCheck()
+            temperature_radioGroup.clearCheck()
+            size_radioGroup.clearCheck()
 
         }
 
@@ -188,15 +193,20 @@ class OrderScreen : Fragment() {
                 very_sweetness_button.text.toString()
         }
 
-        return CartScreenItem(
-            bubbleTeaViewModel.bubbleTeaType.value!!,
-            bubbleTeaViewModel.bubbleTeaTypePicture.value!!,
-            tempButtonString,
-            sizeButtonString,
-            sweetnessButtonString,
-            bubbleTeaViewModel.bubbleTeaUnitPrice.value!!,
-            quantity_editText.text.toString().toInt(),
-            pearls_spinner.toString()
-        )
+        // if quantity string is not empty then return the item else return an empty item
+        if(quantity_editText.text.toString() != "") {
+            return CartScreenItem(
+                bubbleTeaViewModel.bubbleTeaType.value!!,
+                bubbleTeaViewModel.bubbleTeaTypePicture.value!!,
+                tempButtonString,
+                sizeButtonString,
+                sweetnessButtonString,
+                bubbleTeaViewModel.bubbleTeaUnitPrice.value!!,
+                quantity_editText.text.toString().toInt(),
+                pearls_spinner.toString()
+            )
+        }else{
+            return CartScreenItem("",0,"","","",0.0,0,"")
+        }
     }
 }
