@@ -40,7 +40,6 @@ class MenuScreen : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        itemArray.add(Item(R.drawable.original_flavor,"Original Flavor",3.0))
 
         viewAdapter = RecyclerViewAdapterMenu(itemArray) { menuitem:Item ->
             recyclerViewItemSelected(menuitem)
@@ -52,6 +51,12 @@ class MenuScreen : Fragment() {
             this.adapter = viewAdapter
             this.layoutManager = viewManager
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        itemArray.clear()
+        itemArray.add(Item(R.drawable.original_flavor,"Original Flavor",3.0))
     }
 
     fun recyclerViewItemSelected(menuItem: Item){
