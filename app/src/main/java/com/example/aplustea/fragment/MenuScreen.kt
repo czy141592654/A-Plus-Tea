@@ -15,7 +15,6 @@ import com.example.aplustea.Item
 import com.example.aplustea.R
 import com.example.aplustea.adapter.RecyclerViewAdapterMenu
 import kotlinx.android.synthetic.main.fragment_menu_screen.*
-import kotlinx.android.synthetic.main.menu_item.*
 import java.lang.Exception
 
 
@@ -58,7 +57,7 @@ class MenuScreen : Fragment() {
     fun recyclerViewItemSelected(menuItem: Item){
         bubbleTeaViewModel.bubbleTeaType.value = menuItem.name
         bubbleTeaViewModel.bubbleTeaTypePicture.value = menuItem.backGround
-        bubbleTeaViewModel.bubbleTeaPrice.value = menuItem.price
+        bubbleTeaViewModel.bubbleTeaUnitPrice.value = menuItem.price
         findNavController().navigate(R.id.action_menuScreen_to_orderScreen)
     }
 

@@ -6,20 +6,99 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.aplustea.BubbleTeaViewModel
+import com.example.aplustea.Item
 import com.example.aplustea.R
+import com.example.aplustea.adapter.RecyclerViewAdapterCartScreen
+import com.example.aplustea.adapter.RecyclerViewAdapterMenu
+import kotlinx.android.synthetic.main.fragment_cart_screen.*
+import kotlinx.android.synthetic.main.fragment_menu_screen.*
+import java.lang.Exception
 
 /**
  * A simple [Fragment] subclass.
  */
 class CartScreen : Fragment() {
+    lateinit var bubbleTeaViewModel: BubbleTeaViewModel
+    lateinit var viewAdapter: RecyclerViewAdapterCartScreen
+    lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        bubbleTeaViewModel = activity?.run {
+            ViewModelProviders.of(this).get(BubbleTeaViewModel::class.java)
+        } ?: throw Exception("activity invalid")
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_cart_screen, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // button for delivery or pick up
 
+        //???????????????????????????????????????
+        switch_for_delivery.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                switch_for_delivery.text = "Delivery"
+            } else {
+                switch_for_delivery.text = "Pick Up"
+            }
+        }
+
+
+        // for cart recycler view
+        viewAdapter = RecyclerViewAdapterCartScreen(ArrayList())
+        viewManager = LinearLayoutManager(context)
+
+        cart_screen_recyclerview.apply {
+            this.adapter = viewAdapter
+            this.layoutManager = viewManager
+        }
+
+
+        bubbleTeaViewModel.cartScreenItem.observe(this, Observer {
+            viewAdapter.cart_array = it
+            viewAdapter.notifyDataSetChanged()
+        })
+
+        add_more_button.setOnClickListener {
+            findNavController().navigate(R.id.action_cartScreen_to_menuScreen)
+        }
+
+        bubbleTeaViewModel.totalPrice.observe(this, Observer {
+            total_price_text.setText(it.toString() + "$")
+        })
+
+        ItemTouchHelper(SwiperHelper()).attachToRecyclerView(
+            cart_screen_recyclerview
+        )
+
+    }
+
+    // swipe right to delete
+    inner class SwiperHelper() : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            var item = bubbleTeaViewModel.cartScreenItem.value!!.get(viewHolder.adapterPosition)
+            var deleteItemPrice = item.unitPrice * item.quantity.toDouble()
+            bubbleTeaViewModel.totalPrice.value =  bubbleTeaViewModel.totalPrice.value!!.minus( deleteItemPrice)
+            bubbleTeaViewModel.cartScreenItem.value!!.remove(item)
+            viewAdapter.notifyItemRemoved(viewHolder.adapterPosition)
+        }
+    }
 }
+

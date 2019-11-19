@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_cartScreen_to_confirmedOrder"
             app:destination="@id/confirmedOrder" />
+        <action
+            android:id="@+id/action_cartScreen_to_menuScreen"
+            app:destination="@id/menuScreen" />
     </fragment>
     <fragment
         android:id="@+id/loginScreen"

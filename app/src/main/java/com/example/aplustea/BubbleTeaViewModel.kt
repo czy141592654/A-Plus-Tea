@@ -12,7 +12,10 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
     var quantityString = MutableLiveData<String>()
     var sizeRadioGroupID = MutableLiveData<Int>()
     var bubbleTeaTypePicture = MutableLiveData<Int>()
-    var bubbleTeaPrice = MutableLiveData<Double>()
+    var bubbleTeaUnitPrice = MutableLiveData<Double>()
+    var orderInfo = MutableLiveData<ArrayList<String>>()
+    var totalPrice = MutableLiveData<Double>()
+    var cartScreenItem = MutableLiveData<ArrayList<CartScreenItem>>()
 
     init {
         bubbleTeaType.value = ""
@@ -22,7 +25,9 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
         quantityString.value = ""
         sizeRadioGroupID.value = 0
         bubbleTeaTypePicture.value = 0
-        bubbleTeaPrice.value = 0.0
-
+        bubbleTeaUnitPrice.value = 0.0
+        orderInfo.value = ArrayList()
+        totalPrice.value = 0.0
+        cartScreenItem.value = ArrayList()
     }
 }

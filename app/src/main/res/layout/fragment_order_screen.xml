@@ -89,20 +89,22 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Regular" />
+            android:text="Regular"
+            android:id="@+id/regular_size_button"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
-            android:text="Large" />
+            android:text="Large"
+            android:id="@+id/large_size_button"/>
 
     </RadioGroup>
 
     <RadioGroup
         android:id="@+id/sweetness_radioGroup"
-        android:layout_width="252dp"
-        android:layout_height="52dp"
+        android:layout_width="262dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,15 +114,17 @@
         app:layout_constraintVertical_bias="0.382">
 
         <RadioButton
+            android:id="@+id/regular_sweetness_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Regular" />
+            android:text="Regular Sweet" />
 
         <RadioButton
+            android:id="@+id/very_sweetness_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:text="Very">
+            android:text="Very Sweet">
 
         </RadioButton>
 
@@ -141,13 +145,15 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cold" />
+            android:text="Cold"
+            android:id="@+id/cold_button"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
-            android:text="Hot">
+            android:text="Hot"
+            android:id="@+id/hot_button">
 
         </RadioButton>
 
@@ -178,7 +184,7 @@
         app:layout_constraintVertical_bias="0.857" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/add_button"
         android:layout_width="129dp"
         android:layout_height="61dp"
         android:backgroundTint="#705F5C"
@@ -192,7 +198,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/checkout_button"
         android:layout_width="158dp"
         android:layout_height="62dp"
         android:backgroundTint="#705F5C"

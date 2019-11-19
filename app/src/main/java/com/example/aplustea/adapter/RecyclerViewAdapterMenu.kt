@@ -37,7 +37,6 @@ class RecyclerViewAdapterMenu(
             viewItem.menuItem.setBackgroundResource(item.backGround)
             viewItem.menuItem.text = item.name
 
-
             viewItem.setOnClickListener { clickListener(item) }
         }
     }

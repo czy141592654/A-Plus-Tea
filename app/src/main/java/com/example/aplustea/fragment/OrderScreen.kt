@@ -16,6 +16,10 @@ import com.example.aplustea.R
 import kotlinx.android.synthetic.main.fragment_order_screen.*
 import java.lang.Exception
 import android.text.TextWatcher
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
+import com.example.aplustea.CartScreenItem
+import kotlinx.android.synthetic.*
 
 /**
  * A simple [Fragment] subclass.
@@ -38,9 +42,7 @@ class OrderScreen : Fragment() {
     override fun onPause() {
         // save the current work
         super.onPause()
-        println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + sweetness_radioGroup.checkedRadioButtonId )
-        println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + size_radioGroup.checkedRadioButtonId )
-        println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + quantity_editText.text.toString() )
+
         bubbleTeaViewModel.sweetnessRadioGroupID.value =
             sweetness_radioGroup.checkedRadioButtonId
         bubbleTeaViewModel.temperatureRadioGroupID.value =
@@ -48,11 +50,8 @@ class OrderScreen : Fragment() {
         bubbleTeaViewModel.sizeRadioGroupID.value = size_radioGroup.checkedRadioButtonId
         bubbleTeaViewModel.quantityString.value = quantity_editText.text.toString()
         bubbleTeaViewModel.pearlsSpinnerPosition.value = pearls_spinner.selectedItemPosition
-        println("///////////////////////////////////////" + bubbleTeaViewModel.sweetnessRadioGroupID.value )
-        println("///////////////////////////////////////" + bubbleTeaViewModel.sizeRadioGroupID.value )
-        println("///////////////////////////////////////" + bubbleTeaViewModel.quantityString.value )
-    }
 
+    }
 
 
     @SuppressLint("SetTextI18n")
@@ -61,9 +60,7 @@ class OrderScreen : Fragment() {
         val pearlsAdapter =
             ArrayAdapter(context!!, android.R.layout.simple_spinner_dropdown_item, pearlsTypes)
         pearls_spinner.adapter = pearlsAdapter
-        println("---------------------------------------" + bubbleTeaViewModel.sweetnessRadioGroupID.value )
-        println("---------------------------------------" + bubbleTeaViewModel.sizeRadioGroupID.value )
-        println("---------------------------------------" + bubbleTeaViewModel.quantityString.value  )
+
         // resume the work
         bubbleTeaViewModel.quantityString.observe(this, Observer {
             quantity_editText.setText(it)
@@ -88,7 +85,7 @@ class OrderScreen : Fragment() {
 
 
         // show the total price of the current type bubble tea
-        bubbleTeaViewModel.bubbleTeaPrice.observe(this, Observer {
+        bubbleTeaViewModel.bubbleTeaUnitPrice.observe(this, Observer {
             item_total_textview.setText("$it$")
             // this will get the text immediately when the quantity get changed
             quantity_editText.addTextChangedListener(object : TextWatcher {
@@ -110,6 +107,96 @@ class OrderScreen : Fragment() {
                 }
             })
         })
+        add_button.setOnClickListener {
+            // add to cartScreen arraylist if it is not in there
+            var cartScreenItem: CartScreenItem = addCartItem()
+            var duplicates = false
+            bubbleTeaViewModel.cartScreenItem.value!!.forEach {
+                if (it.flavor == cartScreenItem.flavor &&
+                    it.itemPicture == cartScreenItem.itemPicture &&
+                    it.quantity == cartScreenItem.quantity &&
+                    it.size == cartScreenItem.size &&
+                    it.sweetness == cartScreenItem.sweetness &&
+                    it.temperature == cartScreenItem.temperature &&
+                    it.pearls == cartScreenItem.pearls
+                ) {
+                    duplicates = true
+                }
+            }
+            if (duplicates == false) {
+                var currentPrice = bubbleTeaViewModel.totalPrice.value!!
+                bubbleTeaViewModel.totalPrice.value =
+                    currentPrice + quantity_editText.text.toString().toDouble() * bubbleTeaViewModel.bubbleTeaUnitPrice.value!!
+                bubbleTeaViewModel.cartScreenItem.value!!.add(cartScreenItem)
+            }
+        }
+        checkout_button.setOnClickListener {
+            // add to cartScreen arraylist if it is not in there
+            var cartScreenItem: CartScreenItem = addCartItem()
+            var duplicates = false
+            bubbleTeaViewModel.cartScreenItem.value!!.forEach {
+                if (it.flavor == cartScreenItem.flavor &&
+                    it.itemPicture == cartScreenItem.itemPicture &&
+                    it.quantity == cartScreenItem.quantity &&
+                    it.size == cartScreenItem.size &&
+                    it.sweetness == cartScreenItem.sweetness &&
+                    it.temperature == cartScreenItem.temperature &&
+                    it.pearls == cartScreenItem.pearls
+                ) {
+                    duplicates = true
+                }
+            }
+            if (duplicates == false) {
+                var currentPrice = bubbleTeaViewModel.totalPrice.value!!
+                bubbleTeaViewModel.totalPrice.value =
+                    currentPrice + quantity_editText.text.toString().toDouble() * bubbleTeaViewModel.bubbleTeaUnitPrice.value!!
+                bubbleTeaViewModel.cartScreenItem.value!!.add(cartScreenItem)
+            }
+            findNavController().navigate(R.id.action_orderScreen_to_cartScreen)
 
+        }
+
+
+    }
+
+    // get current cart item
+    fun addCartItem(): CartScreenItem {
+        // get temperature string
+
+        var selectedRadioButtonID = temperature_radioGroup.checkedRadioButtonId
+        var tempButtonString = ""
+        when (selectedRadioButtonID) {
+            R.id.hot_button -> tempButtonString = hot_button.text.toString()
+            R.id.cold_button -> tempButtonString = cold_button.text.toString()
+        }
+
+        // get size string
+        selectedRadioButtonID = size_radioGroup.checkedRadioButtonId
+        var sizeButtonString = ""
+        when (selectedRadioButtonID) {
+            R.id.regular_size_button -> sizeButtonString = regular_size_button.text.toString()
+            R.id.large_size_button -> sizeButtonString = large_size_button.text.toString()
+        }
+
+        // get sweetness string
+        selectedRadioButtonID = sweetness_radioGroup.checkedRadioButtonId
+        var sweetnessButtonString = ""
+        when (selectedRadioButtonID) {
+            R.id.regular_sweetness_button -> sweetnessButtonString =
+                regular_sweetness_button.text.toString()
+            R.id.very_sweetness_button -> sweetnessButtonString =
+                very_sweetness_button.text.toString()
+        }
+
+        return CartScreenItem(
+            bubbleTeaViewModel.bubbleTeaType.value!!,
+            bubbleTeaViewModel.bubbleTeaTypePicture.value!!,
+            tempButtonString,
+            sizeButtonString,
+            sweetnessButtonString,
+            bubbleTeaViewModel.bubbleTeaUnitPrice.value!!,
+            quantity_editText.text.toString().toInt(),
+            pearls_spinner.toString()
+        )
     }
 }
