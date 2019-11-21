@@ -1,76 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".fragment.CartScreen">
+
+
+    <RadioGroup
+        android:id="@+id/size_radioGroup"
+        android:layout_width="277dp"
+        android:layout_height="46dp"
+
+        android:layout_marginTop="44dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/pickup_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick-Up"
+            android:textColor="#EF8E7D" />
+
+        <RadioButton
+            android:id="@+id/delivery_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:text="Delivery"
+            android:textColor="#EF8E7D" />
+
+    </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cart_screen_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="198dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="79dp"
-        android:layout_marginBottom="363dp" />
-
-    <Button
-        android:id="@+id/place_order_button"
-        android:layout_width="227dp"
-        android:layout_height="61dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="86dp"
-        android:layout_marginBottom="18dp"
-        android:text="place order" />
-
-    <Button
-        android:id="@+id/add_more_button"
-        android:layout_width="216dp"
-        android:layout_height="69dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="85dp"
-        android:layout_marginBottom="112dp"
-        android:text="add-more" />
-
-    <Button
-        android:id="@+id/save_flavor_button"
-        android:layout_width="212dp"
-        android:layout_height="73dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="61dp"
-        android:layout_marginBottom="206dp"
-        android:text="save for later" />
-
-    <Switch
-        android:id="@+id/switch_for_delivery"
-        android:layout_width="345dp"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="8dp"
-        android:textSize="30dp"
-        android:text="Pick-Up"/>
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" />
 
     <TextView
         android:id="@+id/total_price_text"
         android:layout_width="246dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="71dp"
-        android:layout_marginBottom="289dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="50$"
-        android:textSize="50dp" />
+        android:textColor="#EF8E7D"
+        android:textSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cart_screen_recyclerview" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/add_more_button"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#705F5C"
+        android:text="add-more"
+        android:textColor="#EF8E7D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_price_text" />
+
+    <Button
+        android:id="@+id/place_order_button"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#705F5C"
+        android:text="place order"
+        android:textColor="#EF8E7D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_more_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

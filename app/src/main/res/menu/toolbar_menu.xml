@@ -7,13 +7,10 @@
         android:icon="@drawable/profile"
         android:title="Account"
         app:showAsAction="always" />
+
     <item
-        android:id="@+id/previousScreen_item"
-        android:title="Previous Orders"
-        app:showAsAction="withText" />
-    <item
-        android:id="@+id/favoritesScreen_item"
-        android:title="Favorites"
-        app:showAsAction="withText" />
+        android:id="@+id/menuScreen_item"
+        android:title="MENU"
+        app:showAsAction="always"/>
 
 </menu>

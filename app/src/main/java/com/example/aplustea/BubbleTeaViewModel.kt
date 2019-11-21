@@ -16,6 +16,7 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
     var orderInfo = MutableLiveData<ArrayList<String>>()
     var totalPrice = MutableLiveData<Double>()
     var cartScreenItem = MutableLiveData<ArrayList<CartScreenItem>>()
+    var orderSwitchButton = MutableLiveData<Boolean>()
 
     init {
         bubbleTeaType.value = ""
@@ -29,5 +30,6 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
         orderInfo.value = ArrayList()
         totalPrice.value = 0.0
         cartScreenItem.value = ArrayList()
+        orderSwitchButton.value = true
     }
 }

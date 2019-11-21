@@ -10,9 +10,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aplustea.Bubble
 import com.example.aplustea.BubbleTeaViewModel
 import com.example.aplustea.Item
 import com.example.aplustea.R
+import com.example.aplustea.adapter.RecyclerViewAdapterBubble
 import com.example.aplustea.adapter.RecyclerViewAdapterMenu
 import kotlinx.android.synthetic.main.fragment_menu_screen.*
 import java.lang.Exception
@@ -23,8 +25,11 @@ import java.lang.Exception
  */
 class MenuScreen : Fragment() {
     var itemArray = ArrayList<Item>()
-    lateinit var viewAdapter: RecyclerViewAdapterMenu
-    lateinit var viewManager: RecyclerView.LayoutManager
+    var bubbleArray = ArrayList<Bubble>()
+    lateinit var viewAdapterMenu: RecyclerViewAdapterMenu
+    lateinit var viewManagerMenu: RecyclerView.LayoutManager
+    lateinit var viewAdapterBubble: RecyclerViewAdapterBubble
+    lateinit var viewManagerBubble: RecyclerView.LayoutManager
     lateinit var bubbleTeaViewModel:BubbleTeaViewModel
 
 
@@ -41,22 +46,35 @@ class MenuScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewAdapter = RecyclerViewAdapterMenu(itemArray) { menuitem:Item ->
+        // recycler view adapter for menu
+        viewAdapterMenu = RecyclerViewAdapterMenu(itemArray) { menuitem:Item ->
             recyclerViewItemSelected(menuitem)
         }
 
-        viewManager = LinearLayoutManager(context)
+        viewManagerMenu = LinearLayoutManager(context)
 
         menu_recyclerView.apply {
-            this.adapter = viewAdapter
-            this.layoutManager = viewManager
+            this.adapter = viewAdapterMenu
+            this.layoutManager = viewManagerMenu
+        }
+
+        // recycler view adapter for bubble
+        viewAdapterBubble = RecyclerViewAdapterBubble(bubbleArray)
+        viewManagerBubble = LinearLayoutManager(context)
+        bubble_recyclerView.apply {
+            this.adapter = viewAdapterBubble
+            this.layoutManager = viewManagerBubble
         }
     }
 
     override fun onResume() {
         super.onResume()
         itemArray.clear()
+        bubbleArray.clear()
         itemArray.add(Item(R.drawable.original_flavor,"Original Flavor",3.0))
+        itemArray.add(Item(R.drawable.common_full_open_on_phone,"don't know",4.0))
+        bubbleArray.add(Bubble(R.drawable.bubble1,"Bubble 1"))
+        bubbleArray.add(Bubble(R.drawable.bubble2,"bubble 2"))
     }
 
     fun recyclerViewItemSelected(menuItem: Item){

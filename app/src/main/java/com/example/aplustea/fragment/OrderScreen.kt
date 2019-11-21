@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_order_screen.*
 import java.lang.Exception
 import android.text.TextWatcher
 import android.widget.Button
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.aplustea.CartScreenItem
 import kotlinx.android.synthetic.*
@@ -26,7 +27,7 @@ import kotlinx.android.synthetic.*
  */
 class OrderScreen : Fragment() {
     lateinit var bubbleTeaViewModel: BubbleTeaViewModel
-    val pearlsTypes = arrayOf("Yes", "No")
+    val pearlsTypes = arrayOf("Regular Boba", "Popping Boba")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,40 +50,70 @@ class OrderScreen : Fragment() {
             temperature_radioGroup.checkedRadioButtonId
         bubbleTeaViewModel.sizeRadioGroupID.value = size_radioGroup.checkedRadioButtonId
         bubbleTeaViewModel.quantityString.value = quantity_editText.text.toString()
-        bubbleTeaViewModel.pearlsSpinnerPosition.value = pearls_spinner.selectedItemPosition
+        bubbleTeaViewModel.pearlsSpinnerPosition.value = boba_spinner.selectedItemPosition
 
     }
 
-
-    @SuppressLint("SetTextI18n")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        // adapter for spinner
-        val pearlsAdapter =
-            ArrayAdapter(context!!, android.R.layout.simple_spinner_dropdown_item, pearlsTypes)
-        pearls_spinner.adapter = pearlsAdapter
-
-        // resume the work
+    override fun onResume() { //RESUME HERE NOT IN onViewCreated
+        super.onResume()
         bubbleTeaViewModel.quantityString.observe(this, Observer {
             quantity_editText.setText(it)
         })
         bubbleTeaViewModel.sweetnessRadioGroupID.observe(this, Observer {
+            if (it == R.id.regular_sweetness_button || it == R.id.very_sweetness_button)
             sweetness_radioGroup.check(it)
         })
         bubbleTeaViewModel.temperatureRadioGroupID.observe(this, Observer {
+            if (it == R.id.hot_button || it == R.id.cold_button)
             temperature_radioGroup.check(it)
         })
         bubbleTeaViewModel.sizeRadioGroupID.observe(this, Observer {
+            if (it == R.id.large_size_button || it == R.id.regular_size_button)
             size_radioGroup.check(it)
         })
         bubbleTeaViewModel.pearlsSpinnerPosition.observe(this, Observer {
-            pearls_spinner.setSelection(it)
+            boba_spinner.setSelection(it)
         })
 
         //show the current bubble tea picture
         bubbleTeaViewModel.bubbleTeaTypePicture.observe(this, Observer {
             bubbleTeaView.setImageResource(it)
         })
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        bubbleTeaViewModel.orderSwitchButton.value = true
+
+        // adapter for spinner
+        val pearlsAdapter =
+            ArrayAdapter(context!!, android.R.layout.simple_spinner_dropdown_item, pearlsTypes)
+        boba_spinner.adapter = pearlsAdapter
+
+        //IMPORTANT : You can not resume here, this is only called ONCE
+
+        // resume the work
+//        bubbleTeaViewModel.quantityString.observe(this, Observer {
+//            quantity_editText.setText(it)
+//        })
+//        bubbleTeaViewModel.sweetnessRadioGroupID.observe(this, Observer {
+//            sweetness_radioGroup.check(it)
+//        })
+//        bubbleTeaViewModel.temperatureRadioGroupID.observe(this, Observer {
+//            temperature_radioGroup.check(it)
+//        })
+//        bubbleTeaViewModel.sizeRadioGroupID.observe(this, Observer {
+//            size_radioGroup.check(it)
+//        })
+//        bubbleTeaViewModel.pearlsSpinnerPosition.observe(this, Observer {
+//            boba_spinner.setSelection(it)
+//        })
+//
+//        //show the current bubble tea picture
+//        bubbleTeaViewModel.bubbleTeaTypePicture.observe(this, Observer {
+//            bubbleTeaView.setImageResource(it)
+//        })
 
 
         // show the total price of the current type bubble tea
@@ -154,11 +185,23 @@ class OrderScreen : Fragment() {
                 bubbleTeaViewModel.cartScreenItem.value!!.add(cartScreenItem)
             }
             findNavController().navigate(R.id.action_orderScreen_to_cartScreen)
-            quantity_editText.text.clear()
-            sweetness_radioGroup.clearCheck()
-            temperature_radioGroup.clearCheck()
-            size_radioGroup.clearCheck()
+            //quantity_editText.text.clear()
+            //sweetness_radioGroup.clearCheck()
+            //temperature_radioGroup.clearCheck()
+            //size_radioGroup.clearCheck()
 
+        }
+
+        boba_switch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                boba_spinner.isVisible = true
+                boba_type_string.isVisible = true
+                bubbleTeaViewModel.orderSwitchButton.value = true
+            } else {
+                boba_spinner.isVisible = false
+                boba_type_string.isVisible = false
+                bubbleTeaViewModel.orderSwitchButton.value = false
+            }
         }
 
 
@@ -194,7 +237,7 @@ class OrderScreen : Fragment() {
         }
 
         // if quantity string is not empty then return the item else return an empty item
-        if(quantity_editText.text.toString() != "") {
+        if (quantity_editText.text.toString() != "" && bubbleTeaViewModel.orderSwitchButton.value == true) {
             return CartScreenItem(
                 bubbleTeaViewModel.bubbleTeaType.value!!,
                 bubbleTeaViewModel.bubbleTeaTypePicture.value!!,
@@ -203,10 +246,21 @@ class OrderScreen : Fragment() {
                 sweetnessButtonString,
                 bubbleTeaViewModel.bubbleTeaUnitPrice.value!!,
                 quantity_editText.text.toString().toInt(),
-                pearls_spinner.toString()
+                boba_spinner.selectedItem.toString()
             )
-        }else{
-            return CartScreenItem("",0,"","","",0.0,0,"")
+        } else if (quantity_editText.text.toString() != "" && bubbleTeaViewModel.orderSwitchButton.value == false) {
+            return CartScreenItem(
+                bubbleTeaViewModel.bubbleTeaType.value!!,
+                bubbleTeaViewModel.bubbleTeaTypePicture.value!!,
+                tempButtonString,
+                sizeButtonString,
+                sweetnessButtonString,
+                bubbleTeaViewModel.bubbleTeaUnitPrice.value!!,
+                quantity_editText.text.toString().toInt(),
+                "No Boba"
+            )
+        } else {
+            return CartScreenItem("", 0, "", "", "", 0.0, 0, "")
         }
     }
 }

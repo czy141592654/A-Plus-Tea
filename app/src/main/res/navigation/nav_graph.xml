@@ -3,20 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeScreen">
+    app:startDestination="@id/menuScreen">
 
-    <fragment
-        android:id="@+id/homeScreen"
-        android:name="com.example.aplustea.fragment.HomeScreen"
-        android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" >
-        <action
-            android:id="@+id/action_homeScreen_to_accountScreen"
-            app:destination="@id/accountScreen" />
-        <action
-            android:id="@+id/action_homeScreen_to_menuScreen"
-            app:destination="@id/menuScreen" />
-    </fragment>
     <fragment
         android:id="@+id/orderScreen"
         android:name="com.example.aplustea.fragment.OrderScreen"
@@ -59,33 +47,13 @@
         android:label="fragment_account_screen"
         tools:layout="@layout/fragment_account_screen" >
         <action
-            android:id="@+id/action_accountScreen_to_favoritesScreen"
-            app:destination="@id/favoritesScreen" />
-        <action
             android:id="@+id/action_accountScreen_to_ownerScreen"
             app:destination="@id/ownerScreen" />
-        <action
-            android:id="@+id/action_accountScreen_to_previousOrdersScreen"
-            app:destination="@id/previousOrdersScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/favoritesScreen"
-        android:name="com.example.aplustea.fragment.FavoritesScreen"
-        android:label="fragment_favorites_screen"
-        tools:layout="@layout/fragment_favorites_screen" >
-        <action
-            android:id="@+id/action_favoritesScreen_to_orderScreen"
-            app:destination="@id/orderScreen" />
     </fragment>
     <action
         android:id="@+id/action_global_accountScreen"
         app:destination="@id/accountScreen"
         app:popUpTo="@id/accountScreen"
-        app:popUpToInclusive="true" />
-    <action
-        android:id="@+id/action_global_favoritesScreen"
-        app:destination="@id/favoritesScreen"
-        app:popUpTo="@id/favoritesScreen"
         app:popUpToInclusive="true" />
     <fragment
         android:id="@+id/menuScreen"
@@ -100,49 +68,12 @@
         android:id="@+id/ownerScreen"
         android:name="com.example.aplustea.fragment.OwnerScreen"
         android:label="fragment_owner_screen"
-        tools:layout="@layout/fragment_owner_screen" >
-        <action
-            android:id="@+id/action_ownerScreen_to_clearOrdersConfirm"
-            app:destination="@id/clearOrdersConfirm" />
-        <action
-            android:id="@+id/action_ownerScreen_to_ownerOrderDetailScreen"
-            app:destination="@id/ownerOrderDetailScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/clearOrdersConfirm"
-        android:name="com.example.aplustea.fragment.ClearOrdersConfirm"
-        android:label="fragment_clear_orders_confirm"
-        tools:layout="@layout/fragment_clear_orders_confirm" >
-        <action
-            android:id="@+id/action_clearOrdersConfirm_to_ownerScreen"
-            app:destination="@id/ownerScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/previousOrdersScreen"
-        android:name="com.example.aplustea.fragment.PreviousOrdersScreen"
-        android:label="fragment_previous_orders_screen"
-        tools:layout="@layout/fragment_previous_orders_screen" >
-        <action
-            android:id="@+id/action_previousOrdersScreen_to_orderScreen"
-            app:destination="@id/orderScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/ownerOrderDetailScreen"
-        android:name="com.example.aplustea.fragment.OwnerOrderDetailScreen"
-        android:label="fragment_owner_order_detail_screen"
-        tools:layout="@layout/fragment_owner_order_detail_screen" >
-        <action
-            android:id="@+id/action_ownerOrderDetailScreen_to_ownerScreen"
-            app:destination="@id/ownerScreen" />
-    </fragment>
+        tools:layout="@layout/fragment_owner_screen" />
     <fragment
         android:id="@+id/confirmedOrder"
         android:name="com.example.aplustea.fragment.ConfirmedOrder"
         android:label="fragment_confirmed_order"
         tools:layout="@layout/fragment_confirmed_order" >
-        <action
-            android:id="@+id/action_confirmedOrder_to_homeScreen"
-            app:destination="@id/homeScreen" />
         <action
             android:id="@+id/action_confirmedOrder_to_cancelOrder"
             app:destination="@id/cancelOrder" />
@@ -152,14 +83,4 @@
         android:name="com.example.aplustea.fragment.CancelOrder"
         android:label="fragment_cancel_order"
         tools:layout="@layout/fragment_cancel_order" />
-    <fragment
-        android:id="@+id/cancelConfirmed"
-        android:name="com.example.aplustea.fragment.CancelConfirmed"
-        android:label="fragment_cancel_confirmed"
-        tools:layout="@layout/fragment_cancel_confirmed" />
-    <action
-        android:id="@+id/action_global_previousOrdersScreen"
-        app:destination="@id/previousOrdersScreen"
-        app:popUpTo="@id/previousOrdersScreen"
-        app:popUpToInclusive="true" />
 </navigation>

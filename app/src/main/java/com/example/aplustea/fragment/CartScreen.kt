@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -43,15 +44,6 @@ class CartScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // button for delivery or pick up
 
-        //???????????????????????????????????????
-        switch_for_delivery.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                switch_for_delivery.text = "Delivery"
-            } else {
-                switch_for_delivery.text = "Pick Up"
-            }
-        }
-
 
         // for cart recycler view
         viewAdapter = RecyclerViewAdapterCartScreen(ArrayList())
@@ -80,6 +72,11 @@ class CartScreen : Fragment() {
             cart_screen_recyclerview
         )
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(context, "Swipe right to delete order items", Toast.LENGTH_LONG).show()
     }
 
     // swipe right to delete
