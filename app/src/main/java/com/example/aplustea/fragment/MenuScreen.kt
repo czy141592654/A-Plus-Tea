@@ -51,7 +51,7 @@ class MenuScreen : Fragment() {
             recyclerViewItemSelected(menuitem)
         }
 
-        viewManagerMenu = LinearLayoutManager(context)
+        viewManagerMenu = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
 
         menu_recyclerView.apply {
             this.adapter = viewAdapterMenu
@@ -60,7 +60,7 @@ class MenuScreen : Fragment() {
 
         // recycler view adapter for bubble
         viewAdapterBubble = RecyclerViewAdapterBubble(bubbleArray)
-        viewManagerBubble = LinearLayoutManager(context)
+        viewManagerBubble = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         bubble_recyclerView.apply {
             this.adapter = viewAdapterBubble
             this.layoutManager = viewManagerBubble
