@@ -36,10 +36,10 @@ class RecyclerViewAdapterCartScreen(
         fun bind(item: CartScreenItem) {
             viewItem.bubbleTeaCartView.setImageResource(item.itemPicture)
             viewItem.flavor_name.setText(item.flavor)
-            var preference = item.size + "/" + item.sweetness + "/" + item.temperature + "/"
+            var preference = item.size + "/" + item.sweetness + "/" + item.temperature + "/" + item.pearls
             viewItem.personal_preference.setText(preference)
             viewItem.unit_price.setText(item.unitPrice.toString() + "$")
-            viewItem.quantity_text_cart.setText(item.quantity.toString())
+            viewItem.quantity_text_cart.setText(item.quantity.toString() + " cups")
         }
     }
 }
