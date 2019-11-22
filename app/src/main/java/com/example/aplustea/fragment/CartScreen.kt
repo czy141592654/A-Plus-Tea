@@ -65,12 +65,25 @@ class CartScreen : Fragment() {
         }
 
         bubbleTeaViewModel.totalPrice.observe(this, Observer {
-            total_price_text.setText(it.toString() + "$")
+            total_price_text.setText("$" + it.toString())
         })
 
         ItemTouchHelper(SwiperHelper()).attachToRecyclerView(
             cart_screen_recyclerview
         )
+
+        place_order_button.setOnClickListener {
+            bubbleTeaViewModel.loggedIn.observe(this, Observer {
+                if(it == true && total_price_text.text.toString() != "$0.0" ) {
+                    findNavController().navigate(R.id.action_cartScreen_to_confirmedOrder)
+                }
+                else if (it == false && total_price_text.text.toString() != "$0.0") {
+                    findNavController().navigate(R.id.action_cartScreen_to_loginScreen)
+                }else {
+                    Toast.makeText(context, "Cart is Empty. Please order something!", Toast.LENGTH_LONG).show()
+                }
+            })
+        }
 
     }
 

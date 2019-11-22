@@ -3,6 +3,8 @@ package com.example.aplustea
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class BubbleTeaViewModel(application: Application): AndroidViewModel(application){
     var bubbleTeaType = MutableLiveData<String>()
@@ -17,6 +19,8 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
     var totalPrice = MutableLiveData<Double>()
     var cartScreenItem = MutableLiveData<ArrayList<CartScreenItem>>()
     var orderSwitchButton = MutableLiveData<Boolean>()
+    var loggedIn = MutableLiveData<Boolean>()
+    var firebase = MutableLiveData<DatabaseReference>()
 
     init {
         bubbleTeaType.value = ""
@@ -31,5 +35,7 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
         totalPrice.value = 0.0
         cartScreenItem.value = ArrayList()
         orderSwitchButton.value = true
+        loggedIn.value = false
+        firebase.value = FirebaseDatabase.getInstance().reference
     }
 }

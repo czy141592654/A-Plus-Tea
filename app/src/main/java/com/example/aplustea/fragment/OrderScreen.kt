@@ -118,7 +118,7 @@ class OrderScreen : Fragment() {
 
         // show the total price of the current type bubble tea
         bubbleTeaViewModel.bubbleTeaUnitPrice.observe(this, Observer {
-            item_total_textview.setText("$it$")
+            item_total_textview.setText("$$it")
             // this will get the text immediately when the quantity get changed
             quantity_editText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -132,9 +132,9 @@ class OrderScreen : Fragment() {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     if (quantity_editText.text.toString() != "") {
                         var price = it * quantity_editText.text.toString().toDouble()
-                        item_total_textview.setText("$price$")
+                        item_total_textview.setText("$$price")
                     } else {
-                        item_total_textview.setText("$it$")
+                        item_total_textview.setText("$$it")
                     }
                 }
             })
