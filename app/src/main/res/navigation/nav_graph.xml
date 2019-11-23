@@ -76,7 +76,14 @@
         android:id="@+id/confirmedOrder"
         android:name="com.example.aplustea.fragment.ConfirmedOrder"
         android:label="fragment_confirmed_order"
-        tools:layout="@layout/fragment_confirmed_order" />
+        tools:layout="@layout/fragment_confirmed_order" >
+        <action
+            android:id="@+id/action_confirmedOrder_to_cancelOrder"
+            app:destination="@id/cancelOrder" />
+        <action
+            android:id="@+id/action_confirmedOrder_to_menuScreen"
+            app:destination="@id/menuScreen" />
+    </fragment>
     <fragment
         android:id="@+id/cancelOrder"
         android:name="com.example.aplustea.fragment.CancelOrder"

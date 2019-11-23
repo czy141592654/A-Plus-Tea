@@ -19,6 +19,14 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
     var totalPrice = MutableLiveData<Double>()
     var cartScreenItem = MutableLiveData<ArrayList<CartScreenItem>>()
     var orderSwitchButton = MutableLiveData<Boolean>()
+
+    var pickupordeliver =  MutableLiveData<String>()
+    var cartStrings =  MutableLiveData<ArrayList<String>>()
+
+    var name = MutableLiveData<String>()
+    var phone = MutableLiveData<String>()
+    var address = MutableLiveData<String>()
+
     var loggedIn = MutableLiveData<Boolean>()
     var firebase = MutableLiveData<DatabaseReference>()
 

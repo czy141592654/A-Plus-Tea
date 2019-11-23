@@ -73,16 +73,20 @@ class CartScreen : Fragment() {
         )
 
         place_order_button.setOnClickListener {
-            bubbleTeaViewModel.loggedIn.observe(this, Observer {
-                if(it == true && total_price_text.text.toString() != "$0.0" ) {
-                    findNavController().navigate(R.id.action_cartScreen_to_confirmedOrder)
+            if(total_price_text.text.toString() != "$0.0" ) { // Changed no longer checks login
+                when (_radioGroup.checkedRadioButtonId) {
+                    R.id.pickup_button -> bubbleTeaViewModel.pickupordeliver.value = pickup_button.text.toString()
+                    R.id.delivery_button -> bubbleTeaViewModel.pickupordeliver.value = delivery_button.text.toString()
                 }
-                else if (it == false && total_price_text.text.toString() != "$0.0") {
-                    findNavController().navigate(R.id.action_cartScreen_to_loginScreen)
-                }else {
-                    Toast.makeText(context, "Cart is Empty. Please order something!", Toast.LENGTH_LONG).show()
+                for (CartScreenItem in viewAdapter.cart_array) {
+                    bubbleTeaViewModel.cartStrings.value?.add(
+                        bubbleTeaViewModel.pickupordeliver.value.toString() + " " + (CartScreenItem.quantity*CartScreenItem.unitPrice).toString() + " " + CartScreenItem.flavor + " " + CartScreenItem.size + " " + CartScreenItem.sweetness + " " + CartScreenItem.temperature + " " + CartScreenItem.pearls)
                 }
-            })
+                viewAdapter.cart_array.clear()
+                findNavController().navigate(R.id.action_cartScreen_to_loginScreen) // will always go to login screen
+            }else {
+                Toast.makeText(context, "Cart is Empty. Please order something!", Toast.LENGTH_LONG).show()
+            }
         }
 
     }
