@@ -9,7 +9,7 @@
 
 
     <RadioGroup
-        android:id="@+id/size_radioGroup"
+        android:id="@+id/_radioGroup"
         android:layout_width="277dp"
         android:layout_height="46dp"
 
@@ -23,6 +23,7 @@
             android:id="@+id/pickup_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="Pick-Up"
             android:textColor="#EF8E7D" />
 
@@ -42,7 +43,7 @@
         android:layout_height="198dp"
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/_radioGroup" />
 
     <TextView
         android:id="@+id/total_price_text"
@@ -50,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="50$"
+        android:text="$50"
         android:textColor="#EF8E7D"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"

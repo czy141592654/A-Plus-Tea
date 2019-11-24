@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/address_editTextA" />
 
     <Button
         android:id="@+id/clear_orders_button"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/update_button" />
 
     <EditText
-        android:id="@+id/name_editText"
+        android:id="@+id/name_editTextA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -50,29 +50,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/phone_textedit"
+        android:id="@+id/phone_texteditA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:text="Phone"
         android:textColor="#705F5C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/name_editTextA" />
 
     <EditText
-        android:id="@+id/address_editText"
+        android:id="@+id/address_editTextA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:text="Address"
         android:textColor="#705F5C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_textedit" />
+        app:layout_constraintTop_toBottomOf="@+id/phone_texteditA" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

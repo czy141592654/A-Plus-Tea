@@ -15,11 +15,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
         android:fontFamily="@font/modak"
-        android:text="Are you sure you want to cancel your order?"
+        android:text="Your order has been placed. Would you like to cancel it?"
         android:textColor="#EF8E7D"
         android:textSize="30sp" />
 

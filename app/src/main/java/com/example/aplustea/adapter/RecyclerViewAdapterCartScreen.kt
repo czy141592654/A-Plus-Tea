@@ -38,7 +38,7 @@ class RecyclerViewAdapterCartScreen(
             viewItem.flavor_name.setText(item.flavor)
             var preference = item.size + "/" + item.sweetness + "/" + item.temperature + "/" + item.pearls
             viewItem.personal_preference.setText(preference)
-            viewItem.unit_price.setText(item.unitPrice.toString() + "$")
+            viewItem.unit_price.setText("$" + item.unitPrice.toString())
             viewItem.quantity_text_cart.setText(item.quantity.toString() + " cups")
         }
     }

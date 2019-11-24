@@ -48,7 +48,7 @@ class OrderScreen : Fragment() {
             sweetness_radioGroup.checkedRadioButtonId
         bubbleTeaViewModel.temperatureRadioGroupID.value =
             temperature_radioGroup.checkedRadioButtonId
-        bubbleTeaViewModel.sizeRadioGroupID.value = size_radioGroup.checkedRadioButtonId
+        bubbleTeaViewModel.sizeRadioGroupID.value = _radioGroup.checkedRadioButtonId
         bubbleTeaViewModel.quantityString.value = quantity_editText.text.toString()
         bubbleTeaViewModel.pearlsSpinnerPosition.value = boba_spinner.selectedItemPosition
 
@@ -69,7 +69,7 @@ class OrderScreen : Fragment() {
         })
         bubbleTeaViewModel.sizeRadioGroupID.observe(this, Observer {
             if (it == R.id.large_size_button || it == R.id.regular_size_button)
-            size_radioGroup.check(it)
+            _radioGroup.check(it)
         })
         bubbleTeaViewModel.pearlsSpinnerPosition.observe(this, Observer {
             boba_spinner.setSelection(it)
@@ -118,7 +118,7 @@ class OrderScreen : Fragment() {
 
         // show the total price of the current type bubble tea
         bubbleTeaViewModel.bubbleTeaUnitPrice.observe(this, Observer {
-            item_total_textview.setText("$it$")
+            item_total_textview.setText("$$it")
             // this will get the text immediately when the quantity get changed
             quantity_editText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -132,9 +132,9 @@ class OrderScreen : Fragment() {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     if (quantity_editText.text.toString() != "") {
                         var price = it * quantity_editText.text.toString().toDouble()
-                        item_total_textview.setText("$price$")
+                        item_total_textview.setText("$$price")
                     } else {
-                        item_total_textview.setText("$it$")
+                        item_total_textview.setText("$$it")
                     }
                 }
             })
@@ -219,7 +219,7 @@ class OrderScreen : Fragment() {
         }
 
         // get size string
-        selectedRadioButtonID = size_radioGroup.checkedRadioButtonId
+        selectedRadioButtonID = _radioGroup.checkedRadioButtonId
         var sizeButtonString = ""
         when (selectedRadioButtonID) {
             R.id.regular_size_button -> sizeButtonString = regular_size_button.text.toString()

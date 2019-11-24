@@ -65,12 +65,29 @@ class CartScreen : Fragment() {
         }
 
         bubbleTeaViewModel.totalPrice.observe(this, Observer {
-            total_price_text.setText(it.toString() + "$")
+            total_price_text.setText("$" + it.toString())
         })
 
         ItemTouchHelper(SwiperHelper()).attachToRecyclerView(
             cart_screen_recyclerview
         )
+
+        place_order_button.setOnClickListener {
+            if(total_price_text.text.toString() != "$0.0" ) { // Changed no longer checks login
+                when (_radioGroup.checkedRadioButtonId) {
+                    R.id.pickup_button -> bubbleTeaViewModel.pickupordeliver.value = pickup_button.text.toString()
+                    R.id.delivery_button -> bubbleTeaViewModel.pickupordeliver.value = delivery_button.text.toString()
+                }
+                for (CartScreenItem in viewAdapter.cart_array) {
+                    bubbleTeaViewModel.cartStrings.value?.add(
+                        bubbleTeaViewModel.pickupordeliver.value.toString() + " " + (CartScreenItem.quantity*CartScreenItem.unitPrice).toString() + " " + CartScreenItem.flavor + " " + CartScreenItem.size + " " + CartScreenItem.sweetness + " " + CartScreenItem.temperature + " " + CartScreenItem.pearls)
+                }
+                viewAdapter.cart_array.clear()
+                findNavController().navigate(R.id.action_cartScreen_to_loginScreen) // will always go to login screen
+            }else {
+                Toast.makeText(context, "Cart is Empty. Please order something!", Toast.LENGTH_LONG).show()
+            }
+        }
 
     }
 
