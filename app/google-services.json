@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "321119532484",
+    "firebase_url": "https://aplustea-52cde.firebaseio.com",
+    "project_id": "aplustea-52cde",
+    "storage_bucket": "aplustea-52cde.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321119532484:android:dd164cfc23877a67f8e091",
+        "android_client_info": {
+          "package_name": "com.example.aplustea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321119532484-9rts8jqfp7071087ruhv54csjspm6mef.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aplustea",
+            "certificate_hash": "5b770ca4558bf06c0f59e210363d7d0c8104b106"
+          }
+        },
+        {
+          "client_id": "321119532484-sscqa8ljifjmqauo40b18pmifaq3g18l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aplustea",
+            "certificate_hash": "615be1f98613329f9e33be9bc502a7e1911fe232"
+          }
+        },
+        {
+          "client_id": "321119532484-2l2ibkc8j11b7j0cn9kvq8opqbra82o0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_slN4fX8EG0-rxAtVyYhxDjEckdkxLf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321119532484-2l2ibkc8j11b7j0cn9kvq8opqbra82o0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
