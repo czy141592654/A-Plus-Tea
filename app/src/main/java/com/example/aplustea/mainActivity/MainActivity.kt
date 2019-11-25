@@ -23,6 +23,21 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_frag)
         findViewById<BottomNavigationView>(R.id.bottom_nav).setupWithNavController(navController)
         //myToolbar.setupWithNavController(navController)
+
+        bottom_nav.setOnNavigationItemSelectedListener {
+            if (it.itemId == R.id.cart) {
+                findNavController(R.id.nav_host_frag).navigate(R.id.action_global_cartScreen)
+            }
+            else if (it.itemId == R.id.profile) {
+                findNavController(R.id.nav_host_frag).navigate(R.id.action_global_accountScreen)
+            }
+            else if (it.itemId == R.id.menuMenu) {
+                findNavController(R.id.nav_host_frag).navigate(R.id.action_global_menuScreen)
+            }
+
+            true
+
+        }
     }
 
 
@@ -32,14 +47,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        val itemId = item.itemId
-
-        if (itemId == R.id.profile) {
-            findNavController(R.id.nav_host_frag).navigate(R.id.action_global_accountScreen)
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//
+//        val itemId = item.itemId
+//
+//        if (itemId == R.id.profile) {
+//            findNavController(R.id.nav_host_frag).navigate(R.id.action_global_accountScreen)
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
 }

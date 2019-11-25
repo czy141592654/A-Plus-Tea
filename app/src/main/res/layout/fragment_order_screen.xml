@@ -33,7 +33,7 @@
         android:textColor="#705F5C"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/_radioGroup"
+        app:layout_constraintEnd_toStartOf="@+id/size_radioGroup"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bubbleTeaView"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/size_radioGroup"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -88,7 +88,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <RadioGroup
-        android:id="@+id/_radioGroup"
+        android:id="@+id/size_radioGroup"
         android:layout_width="277dp"
         android:layout_height="46dp"
 
@@ -121,15 +121,15 @@
 
     <RadioGroup
         android:id="@+id/sweetness_radioGroup"
-        android:layout_width="260dp"
-        android:layout_height="36dp"
+        android:layout_width="262dp"
+        android:layout_height="46dp"
         android:layout_marginTop="24dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/favors4"
-        app:layout_constraintTop_toBottomOf="@+id/_radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/size_radioGroup"
         app:layout_constraintVertical_bias="0.024">
 
         <RadioButton
@@ -145,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:text="Very "
+            android:text="Very Sweet"
             android:textColor="#EF8E7D">
 
         </RadioButton>

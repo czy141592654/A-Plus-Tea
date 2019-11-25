@@ -16,11 +16,9 @@ import com.example.aplustea.R
 import kotlinx.android.synthetic.main.fragment_order_screen.*
 import java.lang.Exception
 import android.text.TextWatcher
-import android.widget.Button
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.aplustea.CartScreenItem
-import kotlinx.android.synthetic.*
 
 /**
  * A simple [Fragment] subclass.
@@ -48,7 +46,7 @@ class OrderScreen : Fragment() {
             sweetness_radioGroup.checkedRadioButtonId
         bubbleTeaViewModel.temperatureRadioGroupID.value =
             temperature_radioGroup.checkedRadioButtonId
-        bubbleTeaViewModel.sizeRadioGroupID.value = _radioGroup.checkedRadioButtonId
+        bubbleTeaViewModel.sizeRadioGroupID.value = size_radioGroup.checkedRadioButtonId
         bubbleTeaViewModel.quantityString.value = quantity_editText.text.toString()
         bubbleTeaViewModel.pearlsSpinnerPosition.value = boba_spinner.selectedItemPosition
 
@@ -69,7 +67,7 @@ class OrderScreen : Fragment() {
         })
         bubbleTeaViewModel.sizeRadioGroupID.observe(this, Observer {
             if (it == R.id.large_size_button || it == R.id.regular_size_button)
-            _radioGroup.check(it)
+            size_radioGroup.check(it)
         })
         bubbleTeaViewModel.pearlsSpinnerPosition.observe(this, Observer {
             boba_spinner.setSelection(it)
@@ -90,30 +88,6 @@ class OrderScreen : Fragment() {
         val pearlsAdapter =
             ArrayAdapter(context!!, android.R.layout.simple_spinner_dropdown_item, pearlsTypes)
         boba_spinner.adapter = pearlsAdapter
-
-        //IMPORTANT : You can not resume here, this is only called ONCE
-
-        // resume the work
-//        bubbleTeaViewModel.quantityString.observe(this, Observer {
-//            quantity_editText.setText(it)
-//        })
-//        bubbleTeaViewModel.sweetnessRadioGroupID.observe(this, Observer {
-//            sweetness_radioGroup.check(it)
-//        })
-//        bubbleTeaViewModel.temperatureRadioGroupID.observe(this, Observer {
-//            temperature_radioGroup.check(it)
-//        })
-//        bubbleTeaViewModel.sizeRadioGroupID.observe(this, Observer {
-//            size_radioGroup.check(it)
-//        })
-//        bubbleTeaViewModel.pearlsSpinnerPosition.observe(this, Observer {
-//            boba_spinner.setSelection(it)
-//        })
-//
-//        //show the current bubble tea picture
-//        bubbleTeaViewModel.bubbleTeaTypePicture.observe(this, Observer {
-//            bubbleTeaView.setImageResource(it)
-//        })
 
 
         // show the total price of the current type bubble tea
@@ -185,10 +159,13 @@ class OrderScreen : Fragment() {
                 bubbleTeaViewModel.cartScreenItem.value!!.add(cartScreenItem)
             }
             findNavController().navigate(R.id.action_orderScreen_to_cartScreen)
-            //quantity_editText.text.clear()
-            //sweetness_radioGroup.clearCheck()
-            //temperature_radioGroup.clearCheck()
-            //size_radioGroup.clearCheck()
+            // ??????????????????????????????????????????????????????????????????????????????
+            // two button are not been checked when get back
+            quantity_editText.text.clear()
+            sweetness_radioGroup.check(cold_button.id)
+            temperature_radioGroup.check(regular_sweetness_button.id)
+            size_radioGroup.check(regular_size_button.id)
+            boba_spinner.setSelection(0)
 
         }
 
@@ -219,7 +196,7 @@ class OrderScreen : Fragment() {
         }
 
         // get size string
-        selectedRadioButtonID = _radioGroup.checkedRadioButtonId
+        selectedRadioButtonID = size_radioGroup.checkedRadioButtonId
         var sizeButtonString = ""
         when (selectedRadioButtonID) {
             R.id.regular_size_button -> sizeButtonString = regular_size_button.text.toString()

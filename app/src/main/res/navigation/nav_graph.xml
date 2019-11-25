@@ -92,5 +92,5 @@
         <action
             android:id="@+id/action_cancelOrder_to_confirmedOrder"
             app:destination="@id/confirmedOrder" />
-    </fragment>
+    </fragment><action android:id="@+id/action_global_menuScreen" app:destination="@id/menuScreen"/><action android:id="@+id/action_global_cartScreen" app:destination="@id/cartScreen"/>
 </navigation>
