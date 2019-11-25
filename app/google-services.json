@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "321119532484-9rts8jqfp7071087ruhv54csjspm6mef.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.aplustea",
-            "certificate_hash": "5b770ca4558bf06c0f59e210363d7d0c8104b106"
-          }
-        },
-        {
           "client_id": "321119532484-sscqa8ljifjmqauo40b18pmifaq3g18l.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
