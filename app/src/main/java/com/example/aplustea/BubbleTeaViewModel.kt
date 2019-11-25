@@ -3,8 +3,11 @@ package com.example.aplustea
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class BubbleTeaViewModel(application: Application): AndroidViewModel(application){
     var bubbleTeaType = MutableLiveData<String>()
@@ -26,6 +29,7 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
     var name = MutableLiveData<String>()
     var phone = MutableLiveData<String>()
     var address = MutableLiveData<String>()
+    var currentTime = MutableLiveData<String>()
 
     var loggedIn = MutableLiveData<Boolean>()
     var firebase = MutableLiveData<DatabaseReference>()
@@ -45,5 +49,23 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
         orderSwitchButton.value = true
         loggedIn.value = false
         firebase.value = FirebaseDatabase.getInstance().reference
+        currentTime.value =""
+        cartStrings.value = ArrayList()
+    }
+
+    // create async function for uploding data
+    suspend fun upload(name:String,address:String,time:String){
+        firebase.value?.child("Users by Phone")?.child(phone.value!!)?.child("Name")
+            ?.setValue(name)
+        firebase.value?.child("Users by Phone")?.child(phone.value!!)?.child("Address")
+            ?.setValue(address)
+        firebase.value?.child("Users by Phone")?.child(phone.value!!)?.child("Time")
+            ?.setValue(time)
+    }
+    fun uploadData(){
+        viewModelScope.launch {
+            async { upload(name.value!!,address.value!!,currentTime.value!!) }
+
+        }
     }
 }

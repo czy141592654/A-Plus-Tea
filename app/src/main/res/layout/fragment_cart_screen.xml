@@ -9,7 +9,7 @@
 
 
     <RadioGroup
-        android:id="@+id/_radioGroup"
+        android:id="@+id/size_radioGroup"
         android:layout_width="277dp"
         android:layout_height="46dp"
 
@@ -43,7 +43,7 @@
         android:layout_height="198dp"
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" />
 
     <TextView
         android:id="@+id/total_price_text"
