@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.aplustea.BubbleTeaViewModel
+import com.example.aplustea.PersonalInfo
 
 import com.example.aplustea.R
 
@@ -62,29 +63,15 @@ class LoginScreen : Fragment() {
                 val currentDate = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date())
                 val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
                 var time = currentDate + " " + currentTime
+
                 bubbleTeaViewModel.name.value = name_editTextL.text.toString()
                 bubbleTeaViewModel.phone.value = phone_texteditL.text.toString()
                 bubbleTeaViewModel.address.value = address_editTextL.text.toString()
                 bubbleTeaViewModel.currentTime.value = time
 
-
-                bubbleTeaViewModel.firebase.value?.child("Users by Phone")?.child(phone_texteditL.text.toString())?.child(time)?.child("Name")
-                    ?.setValue(name_editTextL.text.toString())
-                bubbleTeaViewModel.firebase.value?.child("Users by Phone")?.child(phone_texteditL.text.toString())?.child(time)?.child("Address")
-                    ?.setValue(address_editTextL.text.toString())
-
-                // !!!!CRASH HERE
-                for (order in bubbleTeaViewModel.cartStrings.value!!) { //CRASH NEED ASYNC AND COROUTINES?
-                    bubbleTeaViewModel.firebase.value?.child("Users by Phone")
-                        ?.child(phone_texteditL.text.toString())?.child(time)?.child("Order Info")?.child("$count")
-                        ?.setValue(order)
-                    count++
-                }
-                count = 1
-
-                bubbleTeaViewModel.cartStrings.value!!.clear()
-
-
+                bubbleTeaViewModel.insertInfo(PersonalInfo(phone_texteditL.text.toString(),name_editTextL.text.toString(),address_editTextL.text.toString()))
+                //doing async process here
+                bubbleTeaViewModel.uploadData()
 
                 findNavController().navigate(R.id.action_loginScreen_to_cancelOrder)
             }
@@ -93,25 +80,24 @@ class LoginScreen : Fragment() {
                 val currentDate = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date())
                 val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
                 var time = currentDate + " " + currentTime
+
                 bubbleTeaViewModel.phone.value = phone_texteditL.text.toString()
-                bubbleTeaViewModel.firebase.value?.child("Users by Phone")?.child(phone_texteditL.text.toString())?.child(time)?.child("Name")
-                    ?.setValue(name_editTextL.text.toString())
-                bubbleTeaViewModel.firebase.value?.child("Users by Phone")?.child(phone_texteditL.text.toString())?.child(time)?.child("Address")
-                    ?.setValue(address_editTextL.text.toString())
+
+                // get info from local database
+                var personalInfo = bubbleTeaViewModel.getInfoByPhone(phone_texteditL.text.toString())
+                if(personalInfo != null) {
+                    println("!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    bubbleTeaViewModel.currentTime.value = time
+                    bubbleTeaViewModel.name.value = personalInfo.name
+                    bubbleTeaViewModel.address.value = personalInfo.address
+                    bubbleTeaViewModel.uploadData()
+                    findNavController().navigate(R.id.action_loginScreen_to_cancelOrder)
+                }else{
+                    Toast.makeText(context, "You Have Not Log In Yet", Toast.LENGTH_LONG).show()
+                }
 
 
-                    for (order in bubbleTeaViewModel.cartStrings.value!!) { //CRASH NEED ASYNC AND COROUTINES?
-                        bubbleTeaViewModel.firebase.value?.child("Users by Phone")
-                            ?.child(phone_texteditL.text.toString())?.child(time)?.child("Order Info")?.child("$count")
-                            ?.setValue(order)
-                        count++
-                    }
-                    bubbleTeaViewModel.cartStrings.value!!.clear()
-                    count = 1
 
-
-
-                findNavController().navigate(R.id.action_loginScreen_to_cancelOrder)
 
             } else {
                 Toast.makeText(context, "Missing Information", Toast.LENGTH_LONG).show()

@@ -6,8 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.fragment_login_screen.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class BubbleTeaViewModel(application: Application): AndroidViewModel(application){
     var bubbleTeaType = MutableLiveData<String>()
@@ -34,6 +37,8 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
     var loggedIn = MutableLiveData<Boolean>()
     var firebase = MutableLiveData<DatabaseReference>()
 
+    val database = BubbleDB.getDBObject(getApplication<Application>().applicationContext)
+
     init {
         bubbleTeaType.value = ""
         sweetnessRadioGroupID.value = 0
@@ -54,18 +59,40 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
     }
 
     // create async function for uploding data
-    suspend fun upload(name:String,address:String,time:String){
-        firebase.value?.child("Users by Phone")?.child(phone.value!!)?.child("Name")
+    suspend fun upload(name:String,address:String,time:String,phone:String) = withContext(Dispatchers.IO){
+
+        var counter = 1
+        firebase.value?.child("Users by Phone")?.child(phone)?.child(time)?.child("Name")
             ?.setValue(name)
-        firebase.value?.child("Users by Phone")?.child(phone.value!!)?.child("Address")
+        firebase.value?.child("Users by Phone")?.child(phone)?.child(time)?.child("Address")
             ?.setValue(address)
-        firebase.value?.child("Users by Phone")?.child(phone.value!!)?.child("Time")
-            ?.setValue(time)
+
+        for (order in cartStrings.value!!) {
+
+            firebase.value?.child("Users by Phone")
+                ?.child(phone)?.child(time)?.child("Order Info")?.child("$counter")
+                ?.setValue(order)
+            counter++
+        }
+        cartStrings.value!!.clear()
+
     }
     fun uploadData(){
         viewModelScope.launch {
-            async { upload(name.value!!,address.value!!,currentTime.value!!) }
+            async { upload(name.value!!,address.value!!,currentTime.value!!,phone.value!!) }
 
         }
+    }
+
+    fun insertInfo(info:PersonalInfo){
+        database?.bubbleDAO()?.insert(info)
+    }
+
+    fun getInfoByPhone(phone:String):PersonalInfo{
+        return database?.bubbleDAO()!!.getInfoByPhone(phone)
+    }
+
+    fun getAllInfo():List<PersonalInfo>{
+        return database?.bubbleDAO()!!.getAll()
     }
 }
