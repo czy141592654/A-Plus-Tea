@@ -74,7 +74,9 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
                 ?.setValue(order)
             counter++
         }
+
         cartStrings.value!!.clear()
+
 
     }
     fun uploadData(){
@@ -94,5 +96,9 @@ class BubbleTeaViewModel(application: Application): AndroidViewModel(application
 
     fun getAllInfo():List<PersonalInfo>{
         return database?.bubbleDAO()!!.getAll()
+    }
+
+    fun deleteInfo(info:PersonalInfo){
+        database?.bubbleDAO()?.delete(info)
     }
 }
