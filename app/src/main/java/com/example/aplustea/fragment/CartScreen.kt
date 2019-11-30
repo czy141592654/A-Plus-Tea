@@ -77,10 +77,7 @@ class CartScreen : Fragment() {
                     R.id.delivery_button -> bubbleTeaViewModel.pickupordeliver.value =
                         delivery_button.text.toString()
                 }
-//                for (CartScreenItem in viewAdapter.cart_array) {
-//                    bubbleTeaViewModel.cartStrings.value?.add(
-//                        bubbleTeaViewModel.pickupordeliver.value.toString() + "  " + ("$" + CartScreenItem.quantity*CartScreenItem.unitPrice).toString() + "  " + CartScreenItem.flavor + "  " + CartScreenItem.size + "  " + CartScreenItem.sweetness + "  " + CartScreenItem.temperature + "  " + CartScreenItem.pearls)
-//                }
+
                 viewAdapter.cart_array.forEach {
                     bubbleTeaViewModel.cartStrings.value!!.add(
                         bubbleTeaViewModel.pickupordeliver.value.toString() + "  " + ("$" + it.quantity * it.unitPrice).toString() + "  " + it.flavor + "  " + it.size + "  " + it.sweetness + "  " + it.temperature + "  " + it.pearls

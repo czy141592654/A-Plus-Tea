@@ -13,31 +13,39 @@
         android:id="@+id/boba_type_string"
         android:layout_width="79dp"
         android:layout_height="22dp"
+        android:layout_marginTop="56dp"
         android:text="Boba Types"
         android:textColor="#705F5C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temperature_radioGroup" />
+
+    <ImageView
+        android:id="@+id/bubbleTeaView"
+        android:layout_width="360dp"
+        android:layout_height="77dp"
+        android:src="@drawable/original_flavor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:srcCompat="@drawable/menupic" />
 
     <TextView
         android:id="@+id/favors3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="452dp"
+        android:layout_marginTop="24dp"
         android:text="Size"
         android:textColor="#705F5C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/size_radioGroup"
         app:layout_constraintEnd_toStartOf="@+id/size_radioGroup"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.229"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bubbleTeaView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/bubbleTeaView" />
 
     <TextView
         android:id="@+id/favors4"
@@ -48,12 +56,11 @@
         android:text="Sweetness"
         android:textColor="#705F5C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/sweetness_radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/size_radioGroup"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/size_radioGroup" />
 
     <TextView
         android:id="@+id/favors6"
@@ -64,42 +71,37 @@
         android:text="Ice"
         android:textColor="#705F5C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/temperature_radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sweetness_radioGroup"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/sweetness_radioGroup" />
 
     <TextView
         android:id="@+id/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginTop="52dp"
         android:text="Quantity(cups)"
         android:textColor="#705F5C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/boba_switch" />
 
     <RadioGroup
         android:id="@+id/size_radioGroup"
-        android:layout_width="277dp"
-        android:layout_height="46dp"
+        android:layout_width="276dp"
+        android:layout_height="34dp"
 
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bubbleTeaView"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/bubbleTeaView">
 
         <RadioButton
             android:id="@+id/regular_size_button"
@@ -125,12 +127,10 @@
         android:layout_height="46dp"
         android:layout_marginTop="24dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/favors4"
-        app:layout_constraintTop_toBottomOf="@+id/size_radioGroup"
-        app:layout_constraintVertical_bias="0.024">
+        app:layout_constraintTop_toBottomOf="@+id/size_radioGroup">
 
         <RadioButton
             android:id="@+id/regular_sweetness_button"
@@ -159,12 +159,10 @@
         android:layout_height="37dp"
         android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.974"
         app:layout_constraintStart_toEndOf="@+id/favors6"
-        app:layout_constraintTop_toBottomOf="@+id/sweetness_radioGroup"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/sweetness_radioGroup">
 
         <RadioButton
             android:id="@+id/cold_button"
@@ -190,28 +188,24 @@
         android:id="@+id/boba_spinner"
         android:layout_width="129dp"
         android:layout_height="51dp"
-        android:layout_marginTop="380dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/boba_type_string"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/temperature_radioGroup" />
 
     <TextView
         android:id="@+id/item_total_textview"
-        android:layout_width="271dp"
-        android:layout_height="43dp"
+        android:layout_width="268dp"
+        android:layout_height="42dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:textColor="#EF8E7D"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quantity_editText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/quantity_editText" />
 
     <Button
         android:id="@+id/add_button"
@@ -228,46 +222,31 @@
 
     <EditText
         android:id="@+id/quantity_editText"
-        android:layout_width="142dp"
-        android:layout_height="45dp"
+        android:layout_width="125dp"
+        android:layout_height="53dp"
 
 
-        android:layout_marginEnd="84dp"
+        android:layout_marginStart="8dp"
 
-        android:layout_marginBottom="160dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="number"
         android:textColor="#EF8E7D"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toEndOf="@+id/quantity"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/bubbleTeaView"
-        android:layout_width="359dp"
-        android:layout_height="142dp"
-        android:src="@drawable/original_flavor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/menupic" />
+        app:layout_constraintTop_toBottomOf="@+id/boba_spinner" />
 
     <Button
         android:id="@+id/checkout_button"
         android:layout_width="192dp"
         android:layout_height="65dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#705F5C"
         android:text="CHECKOUT"
         android:textColor="#EF8E7D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.969"
         app:layout_constraintStart_toEndOf="@+id/add_button"
         app:layout_constraintTop_toBottomOf="@+id/item_total_textview" />
 
@@ -280,11 +259,11 @@
         android:text="Boba"
         android:textColor="#705F5C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/boba_type_string"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
+        app:layout_constraintTop_toBottomOf="@+id/favors6"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

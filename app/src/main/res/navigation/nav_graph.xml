@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_loginScreen_to_cancelOrder"
             app:destination="@id/cancelOrder" />
+        <action
+            android:id="@+id/action_loginScreen_to_ownerScreen"
+            app:destination="@id/ownerScreen" />
     </fragment>
     <fragment
         android:id="@+id/accountScreen"

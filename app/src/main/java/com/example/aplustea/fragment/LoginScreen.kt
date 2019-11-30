@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.aplustea.BubbleTeaViewModel
+import com.example.aplustea.PersonalInfo
 
 import com.example.aplustea.R
 
@@ -28,7 +29,7 @@ import java.util.*
  */
 class LoginScreen : Fragment() {
     lateinit var bubbleTeaViewModel: BubbleTeaViewModel
-    var count = 1
+    var password = 123456789
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +40,11 @@ class LoginScreen : Fragment() {
         } ?: throw Exception("activity invalid")
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login_screen, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,66 +63,73 @@ class LoginScreen : Fragment() {
         }
         login_button.setOnClickListener {
             // USER HAS NOT LOGGED IN YET SEND NAME, PHONE, ADDRESS, ORDER INFO TO FIREBASE, CRASH ON SENDING ORDER
-            if ((bubbleTeaViewModel.loggedIn.value == false) && (name_editTextL.text.isNotBlank() && phone_texteditL.text.isNotBlank() && address_editTextL.text.toString().isNotBlank())) {
+            if (bubbleTeaViewModel.cartStrings.value.toString() != "[]") {
+                if ((bubbleTeaViewModel.loggedIn.value == false) && (name_editTextL.text.isNotBlank() && phone_texteditL.text.isNotBlank() && address_editTextL.text.toString().isNotBlank())) {
 
-                val currentDate = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date())
-                val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-                var time = currentDate + " " + currentTime
-                bubbleTeaViewModel.name.value = name_editTextL.text.toString()
-                bubbleTeaViewModel.phone.value = phone_texteditL.text.toString()
-                bubbleTeaViewModel.address.value = address_editTextL.text.toString()
-                bubbleTeaViewModel.currentTime.value = time
+                    val currentDate =
+                        SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date())
+                    val currentTime =
+                        SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
+                    var time = currentDate + " " + currentTime
 
+                    bubbleTeaViewModel.name.value = name_editTextL.text.toString()
+                    bubbleTeaViewModel.phone.value = phone_texteditL.text.toString()
+                    bubbleTeaViewModel.address.value = address_editTextL.text.toString()
+                    bubbleTeaViewModel.currentTime.value = time
 
-                bubbleTeaViewModel.firebase.value?.child("Users by Phone")?.child(phone_texteditL.text.toString())?.child(time)?.child("Name")
-                    ?.setValue(name_editTextL.text.toString())
-                bubbleTeaViewModel.firebase.value?.child("Users by Phone")?.child(phone_texteditL.text.toString())?.child(time)?.child("Address")
-                    ?.setValue(address_editTextL.text.toString())
-
-                // !!!!CRASH HERE
-                for (order in bubbleTeaViewModel.cartStrings.value!!) { //CRASH NEED ASYNC AND COROUTINES?
-                    bubbleTeaViewModel.firebase.value?.child("Users by Phone")
-                        ?.child(phone_texteditL.text.toString())?.child(time)?.child("Order Info")?.child("$count")
-                        ?.setValue(order)
-                    count++
-                }
-                count = 1
-
-                bubbleTeaViewModel.cartStrings.value!!.clear()
-
-
-
-                findNavController().navigate(R.id.action_loginScreen_to_cancelOrder)
-            }
-            // USER HAS LOGGED IN ALREADY JUST GET PHONE AND ORDER INFO TO FIREBASE, CRASH ON SENDING ORDER
-            else if (bubbleTeaViewModel.loggedIn.value == true && phone_texteditL.text.isNotBlank()) {
-                val currentDate = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date())
-                val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-                var time = currentDate + " " + currentTime
-                bubbleTeaViewModel.phone.value = phone_texteditL.text.toString()
-                bubbleTeaViewModel.firebase.value?.child("Users by Phone")?.child(phone_texteditL.text.toString())?.child(time)?.child("Name")
-                    ?.setValue(name_editTextL.text.toString())
-                bubbleTeaViewModel.firebase.value?.child("Users by Phone")?.child(phone_texteditL.text.toString())?.child(time)?.child("Address")
-                    ?.setValue(address_editTextL.text.toString())
-
-
-                    for (order in bubbleTeaViewModel.cartStrings.value!!) { //CRASH NEED ASYNC AND COROUTINES?
-                        bubbleTeaViewModel.firebase.value?.child("Users by Phone")
-                            ?.child(phone_texteditL.text.toString())?.child(time)?.child("Order Info")?.child("$count")
-                            ?.setValue(order)
-                        count++
+                    bubbleTeaViewModel.insertInfo(
+                        PersonalInfo(
+                            phone_texteditL.text.toString(),
+                            name_editTextL.text.toString(),
+                            address_editTextL.text.toString()
+                        )
+                    )
+                    //doing async process here
+                    bubbleTeaViewModel.uploadData()
+                    if (owner_code_editTextL.text.toString() == "123456789") {
+                        findNavController().navigate(R.id.action_loginScreen_to_ownerScreen)
+                    } else {
+                        findNavController().navigate(R.id.action_loginScreen_to_accountScreen)
                     }
-                    bubbleTeaViewModel.cartStrings.value!!.clear()
-                    count = 1
+
+                }
+                // USER HAS LOGGED IN ALREADY JUST GET PHONE AND ORDER INFO TO FIREBASE, CRASH ON SENDING ORDER
+                else if (bubbleTeaViewModel.loggedIn.value == true && phone_texteditL.text.isNotBlank()) {
+                    val currentDate =
+                        SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date())
+                    val currentTime =
+                        SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
+                    var time = currentDate + " " + currentTime
+
+                    bubbleTeaViewModel.phone.value = phone_texteditL.text.toString()
+
+                    // get info from local database
+                    var personalInfo =
+                        bubbleTeaViewModel.getInfoByPhone(phone_texteditL.text.toString())
+                    if (personalInfo != null) {
+                        bubbleTeaViewModel.currentTime.value = time
+                        bubbleTeaViewModel.name.value = personalInfo.name
+                        bubbleTeaViewModel.address.value = personalInfo.address
+                        bubbleTeaViewModel.uploadData()
+                        if (owner_code_editTextL.text.toString() == "123456789") {
+                            findNavController().navigate(R.id.action_loginScreen_to_ownerScreen)
+                        } else {
+                            findNavController().navigate(R.id.action_loginScreen_to_accountScreen)
+                        }
+                    } else {
+                        Toast.makeText(context, "You Have Not Logged In Yet", Toast.LENGTH_LONG)
+                            .show()
+                    }
 
 
+                } else {
+                    Toast.makeText(context, "Missing Information", Toast.LENGTH_LONG).show()
+                }
 
-                findNavController().navigate(R.id.action_loginScreen_to_cancelOrder)
 
-            } else {
-                Toast.makeText(context, "Missing Information", Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(context, "Your cart is empty", Toast.LENGTH_LONG).show()
             }
-
 
         }
     }

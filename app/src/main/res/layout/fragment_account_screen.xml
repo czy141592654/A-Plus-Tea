@@ -13,34 +13,19 @@
         android:layout_width="332dp"
         android:layout_height="66dp"
         android:layout_gravity="center"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="#705F5C"
-        android:text="UPDATE"
+        android:text="UPDATE Info"
         android:textColor="#EF8E7D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_editTextA" />
-
-    <Button
-        android:id="@+id/clear_orders_button"
-        android:layout_width="332dp"
-        android:layout_height="66dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#705F5C"
-        android:text="CLEAR ORDERS"
-        android:textColor="#EF8E7D"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_button" />
+        app:layout_constraintTop_toBottomOf="@+id/user_order_info" />
 
     <EditText
         android:id="@+id/name_editTextA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_width="256dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
@@ -51,28 +36,39 @@
 
     <EditText
         android:id="@+id/phone_texteditA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="257dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="phone"
         android:text="Phone"
         android:textColor="#705F5C"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_editTextA" />
 
     <EditText
         android:id="@+id/address_editTextA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_width="255dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="text"
         android:text="Address"
         android:textColor="#705F5C"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_texteditA" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/account_screen_recyclerview"
+        android:layout_width="358dp"
+        android:layout_height="304dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_editTextA" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
