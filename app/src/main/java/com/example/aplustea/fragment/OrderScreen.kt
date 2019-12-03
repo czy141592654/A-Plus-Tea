@@ -171,12 +171,12 @@ class OrderScreen : Fragment() {
 
         boba_switch.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                boba_spinner.isVisible = true
-                boba_type_string.isVisible = true
+                boba_spinner.visibility = View.VISIBLE
+                boba_type_string.visibility = View.VISIBLE
                 bubbleTeaViewModel.orderSwitchButton.value = true
             } else {
-                boba_spinner.isVisible = false
-                boba_type_string.isVisible = false
+                boba_spinner.visibility = View.INVISIBLE
+                boba_type_string.visibility = View.INVISIBLE
                 bubbleTeaViewModel.orderSwitchButton.value = false
             }
         }

@@ -77,15 +77,15 @@ class CartScreen : Fragment() {
                     R.id.delivery_button -> bubbleTeaViewModel.pickupordeliver.value =
                         delivery_button.text.toString()
                 }
-
-                viewAdapter.cart_array.forEach {
-                    bubbleTeaViewModel.cartStrings.value!!.add(
-                        bubbleTeaViewModel.pickupordeliver.value.toString() + "  " + ("$" + it.quantity * it.unitPrice).toString() + "  " + it.flavor + "  " + it.size + "  " + it.sweetness + "  " + it.temperature + "  " + it.pearls
-                    )
+                if(bubbleTeaViewModel.loggedIn.value == true){
+                    findNavController().navigate(R.id.action_cartScreen_to_cancelOrder)
+                }else{
+                    findNavController().navigate(R.id.action_cartScreen_to_accountScreen)
                 }
-                viewAdapter.cart_array.clear()
-                bubbleTeaViewModel.totalPrice.value = 0.0
-                findNavController().navigate(R.id.action_cartScreen_to_loginScreen) // will always go to login screen
+                bubbleTeaViewModel.placeOrderButtonClicked.value = true
+//                viewAdapter.cart_array.clear()
+//                bubbleTeaViewModel.totalPrice.value = 0.0
+
             } else {
                 Toast.makeText(context, "Cart is Empty. Please order something!", Toast.LENGTH_LONG)
                     .show()

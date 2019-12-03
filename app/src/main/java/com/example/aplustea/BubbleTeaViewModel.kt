@@ -38,12 +38,17 @@ class BubbleTeaViewModel(application: Application) : AndroidViewModel(applicatio
 
     val database = BubbleDB.getDBObject(getApplication<Application>().applicationContext)
 
-    var allOrderInfo = MutableLiveData<ArrayList<OwnerScreenItem>>()
-    var userOrderInfo = MutableLiveData<ArrayList<UserOrderInfo>>()
+    var allOrderInfo = MutableLiveData<ArrayList<UserOrOwnerInfo>>()
+    var userOrderInfo = MutableLiveData<ArrayList<UserOrOwnerInfo>>()
     var getTimeFromFirebase = MutableLiveData<String>()
     var getPhoneNumberFromFirebase = MutableLiveData<String>()
     var getAddressFromFirebase = MutableLiveData<String>()
     var getNameFromFirebase = MutableLiveData<String>()
+    var test = ""
+    var isOwner = MutableLiveData<Boolean>()
+
+    var loggedAlreadyButtonClicked = MutableLiveData<Boolean>()
+    var placeOrderButtonClicked = MutableLiveData<Boolean>()
 
     init {
         bubbleTeaType.value = ""
@@ -59,6 +64,7 @@ class BubbleTeaViewModel(application: Application) : AndroidViewModel(applicatio
         cartScreenItem.value = ArrayList()
         orderSwitchButton.value = true
         loggedIn.value = false
+        isOwner.value = false
         firebase.value = FirebaseDatabase.getInstance().reference
         currentTime.value = ""
         cartStrings.value = ArrayList()
@@ -68,6 +74,10 @@ class BubbleTeaViewModel(application: Application) : AndroidViewModel(applicatio
         getPhoneNumberFromFirebase.value = ""
         getAddressFromFirebase.value = ""
         getNameFromFirebase.value = ""
+        loggedAlreadyButtonClicked.value = false
+        placeOrderButtonClicked.value = false
+
+
 
         firebase.value?.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -80,54 +90,57 @@ class BubbleTeaViewModel(application: Application) : AndroidViewModel(applicatio
                 p0.child("Users by Phone").children.forEach {
                     it.key?.let {
                         getPhoneNumberFromFirebase.value = it
-
                     }
-
                     it.children.forEach {
+                        //FOR EACH TIME
                         it.key?.let {
                             getTimeFromFirebase.value = it
                         }
+                        it.children.forEach {
+                            test = it.key.toString()
+                            it.key?.let {
+                                store = it
+                            }
 
-                       it.child("${getTimeFromFirebase.value}").children.forEach {
-                           it.key?.let {
-                               store = it
-                           }
+                            if (store == "Address") {
+                                it.value?.let {
+                                    getAddressFromFirebase.value = it.toString()
+                                }
 
-                           if(store == "Address"){
-                               it.value?.let {
-                                   getAddressFromFirebase.value = it.toString()
-                               }
+                            } else if (store == "Name") {
+                                it.value?.let {
+                                    getNameFromFirebase.value = it.toString()
+                                }
 
-                           }
-                           if(store == "Name"){
-                               it.value?.let {
-                                   getNameFromFirebase.value = it.toString()
-                               }
-
-                           }
-                       }
-                        it.child("${getTimeFromFirebase.value}").child("Order Info").children.forEach {
-                            allOrderInfo.value?.add(OwnerScreenItem(it.value.toString() + "\n" + getNameFromFirebase.value + " " + getAddressFromFirebase.value + " " + getPhoneNumberFromFirebase.value))
+                            }
+                        }
+                        it.child("Order Info")
+                            .children.forEach {
+                            allOrderInfo.value?.add(UserOrOwnerInfo(it.value.toString() + "\n" + "NAME: " + getNameFromFirebase.value + "\n" + "ADDRESS: " + getAddressFromFirebase.value + "\n" + "PHONE: " + getPhoneNumberFromFirebase.value))
                         }
 
                         // get current user order info
                         if (getPhoneNumberFromFirebase.value == phone.value) {
-                            it.child("${getTimeFromFirebase.value}").child("Order Info")
-                                .children.forEach {
+                            it.child("Order Info").children.forEach {
                                 // value is empty
                                 it.value.let {
-                                    userOrderInfo.value?.add(UserOrderInfo(it.toString()))
+                                    userOrderInfo.value?.add(UserOrOwnerInfo(it.toString()))
                                 }
                             }
                         }
 
                     }
-                    println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " + getAddressFromFirebase.value)
-                    println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + getNameFromFirebase.value)
-                    println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" + store)
+
                 }
+                listener?.updateList()
             }
         })
+    }
+
+    var listener: OnDataChangedListener? = null
+
+    interface OnDataChangedListener {
+        fun updateList()
     }
 
 

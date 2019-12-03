@@ -1,4 +1,4 @@
 package com.example.aplustea
 
-class UserOrderInfo(var info:String) {
+class UserOrOwnerInfo(var info:String) {
 }

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:background="#FEF7E1"
     tools:context=".fragment.CartScreen">
 
 
@@ -23,6 +24,7 @@
             android:id="@+id/pickup_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#EF8E7D"
             android:checked="true"
             android:text="Pick-Up"
             android:textColor="#EF8E7D" />
@@ -32,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
+            android:buttonTint="#EF8E7D"
             android:text="Delivery"
             android:textColor="#EF8E7D" />
 
@@ -49,39 +52,36 @@
         android:id="@+id/total_price_text"
         android:layout_width="246dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:fontFamily="@font/modak"
         android:gravity="center"
         android:text="$50"
         android:textColor="#EF8E7D"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cart_screen_recyclerview" />
 
     <Button
         android:id="@+id/add_more_button"
         android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="36dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#705F5C"
         android:text="add-more"
         android:textColor="#EF8E7D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/total_price_text" />
 
     <Button
         android:id="@+id/place_order_button"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="197dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#705F5C"
         android:text="place order"
         android:textColor="#EF8E7D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_more_button" />
 

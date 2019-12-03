@@ -29,7 +29,6 @@ import java.util.*
  */
 class LoginScreen : Fragment() {
     lateinit var bubbleTeaViewModel: BubbleTeaViewModel
-    var password = 123456789
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,12 +61,11 @@ class LoginScreen : Fragment() {
             }
         }
         login_button.setOnClickListener {
-            // USER HAS NOT LOGGED IN YET SEND NAME, PHONE, ADDRESS, ORDER INFO TO FIREBASE, CRASH ON SENDING ORDER
             if (bubbleTeaViewModel.cartStrings.value.toString() != "[]") {
                 if ((bubbleTeaViewModel.loggedIn.value == false) && (name_editTextL.text.isNotBlank() && phone_texteditL.text.isNotBlank() && address_editTextL.text.toString().isNotBlank())) {
 
                     val currentDate =
-                        SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date())
+                    SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date())
                     val currentTime =
                         SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
                     var time = currentDate + " " + currentTime
@@ -84,16 +82,11 @@ class LoginScreen : Fragment() {
                             address_editTextL.text.toString()
                         )
                     )
-                    //doing async process here
-                    bubbleTeaViewModel.uploadData()
-                    if (owner_code_editTextL.text.toString() == "123456789") {
-                        findNavController().navigate(R.id.action_loginScreen_to_ownerScreen)
-                    } else {
-                        findNavController().navigate(R.id.action_loginScreen_to_accountScreen)
-                    }
+                    bubbleTeaViewModel.loggedIn.value == true
+                    findNavController().navigate(R.id.action_loginScreen_to_cancelOrder)
+
 
                 }
-                // USER HAS LOGGED IN ALREADY JUST GET PHONE AND ORDER INFO TO FIREBASE, CRASH ON SENDING ORDER
                 else if (bubbleTeaViewModel.loggedIn.value == true && phone_texteditL.text.isNotBlank()) {
                     val currentDate =
                         SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(Date())
@@ -110,12 +103,7 @@ class LoginScreen : Fragment() {
                         bubbleTeaViewModel.currentTime.value = time
                         bubbleTeaViewModel.name.value = personalInfo.name
                         bubbleTeaViewModel.address.value = personalInfo.address
-                        bubbleTeaViewModel.uploadData()
-                        if (owner_code_editTextL.text.toString() == "123456789") {
-                            findNavController().navigate(R.id.action_loginScreen_to_ownerScreen)
-                        } else {
-                            findNavController().navigate(R.id.action_loginScreen_to_accountScreen)
-                        }
+                        findNavController().navigate(R.id.action_loginScreen_to_cancelOrder)
                     } else {
                         Toast.makeText(context, "You Have Not Logged In Yet", Toast.LENGTH_LONG)
                             .show()

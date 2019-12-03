@@ -9,26 +9,35 @@
 
     tools:context=".fragment.MenuScreen"
     android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FEF7E1">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="78dp"
-                android:text="business hour: 12:00 - 9:00">
+                android:text="business hour: 12:00 - 9:00"
+                android:textColor="#F44336">
 
             </TextView>
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/Menu"
-                android:textSize="30dp"
-                android:text="Menu(click to order)">
-            </TextView>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/modak"
+                android:gravity="center"
+                android:text="Menu(click to order)"
+                android:textColor="#EF8E7D"
+                android:textSize="30dp"></TextView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/menu_recyclerView"
                 android:layout_width="match_parent"
@@ -44,12 +53,16 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/modak"
+                android:gravity="center"
                 android:text="Boba Review"
+                android:textColor="#EF8E7D"
                 android:textSize="30dp">
 
             </TextView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/bubble_recyclerView"
                 android:layout_width="match_parent"
