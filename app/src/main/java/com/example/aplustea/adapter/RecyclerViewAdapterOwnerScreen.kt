@@ -4,13 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aplustea.OwnerScreenItem
 import com.example.aplustea.R
-import com.example.aplustea.UserOrderInfo
+import com.example.aplustea.UserOrOwnerInfo
 import kotlinx.android.synthetic.main.user_order_info_item.view.*
 
 class RecyclerViewAdapterOwnerScreen(
-    var allOrderInfo: ArrayList<OwnerScreenItem>
+    var allOrderInfo: ArrayList<UserOrOwnerInfo>
 ) : RecyclerView.Adapter<RecyclerViewAdapterOwnerScreen.RecyclerViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -33,7 +32,7 @@ class RecyclerViewAdapterOwnerScreen(
 
     inner class RecyclerViewHolder(var viewItem: View) : RecyclerView.ViewHolder(viewItem) {
 
-        fun bind(item: OwnerScreenItem) {
+        fun bind(item: UserOrOwnerInfo) {
             viewItem.user_order_info_account_screen.setText(item.info)
 
         }

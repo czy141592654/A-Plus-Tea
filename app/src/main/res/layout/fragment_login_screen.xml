@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/owner_code_editTextL" />
+        app:layout_constraintTop_toBottomOf="@+id/address_editTextL" />
 
     <EditText
         android:id="@+id/name_editTextL"
@@ -65,21 +65,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_texteditL" />
-
-    <EditText
-        android:id="@+id/owner_code_editTextL"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Owner Code (Owner ONLY)"
-        android:inputType="number"
-        android:textColor="#705F5C"
-        android:textColorHint="#777777"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_editTextL" />
 
     <Button
         android:id="@+id/loggedAlready_button"

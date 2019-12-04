@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplustea.BubbleTeaViewModel
@@ -15,6 +16,7 @@ import com.example.aplustea.R
 import com.example.aplustea.adapter.RecyclerViewAdapterAccountScreen
 import com.example.aplustea.adapter.RecyclerViewAdapterOwnerScreen
 import kotlinx.android.synthetic.main.fragment_account_screen.*
+import kotlinx.android.synthetic.main.fragment_owner_screen.*
 import java.lang.Exception
 
 /**
@@ -22,8 +24,8 @@ import java.lang.Exception
  */
 class OwnerScreen : Fragment() {
     lateinit var bubbleTeaViewModel: BubbleTeaViewModel
-    lateinit var viewAdapter: RecyclerViewAdapterOwnerScreen
-    lateinit var viewManager: RecyclerView.LayoutManager
+//    lateinit var viewAdapter: RecyclerViewAdapterOwnerScreen
+//    lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,18 +39,27 @@ class OwnerScreen : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewAdapter = RecyclerViewAdapterOwnerScreen(ArrayList())
-        viewManager = LinearLayoutManager(context)
-
-        account_screen_recyclerview.apply {
-            this.adapter = viewAdapter
-            this.layoutManager = viewManager
+        no_button.setOnClickListener {
+            findNavController().navigate(R.id.action_global_accountScreen)
         }
 
+        yes_button.setOnClickListener {
+            bubbleTeaViewModel.firebase.value?.child("Users by Phone")?.setValue(null)
+            findNavController().navigate(R.id.action_global_accountScreen)
+        }
 
-        bubbleTeaViewModel.allOrderInfo.observe(this, Observer {
-            viewAdapter.allOrderInfo = it
-            viewAdapter.notifyDataSetChanged()
-        })
+//        viewAdapter = RecyclerViewAdapterOwnerScreen(ArrayList())
+//        viewManager = LinearLayoutManager(context)
+//
+//        account_screen_recyclerview.apply {
+//            this.adapter = viewAdapter
+//            this.layoutManager = viewManager
+//        }
+//
+//
+//        bubbleTeaViewModel.allOrderInfo.observe(this, Observer {
+//            viewAdapter.allOrderInfo = it
+//            viewAdapter.notifyDataSetChanged()
+//        })
     }
 }

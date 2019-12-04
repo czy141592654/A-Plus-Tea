@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
 
 
+    android:background="#FEF7E1"
     android:orientation="vertical">
 
     <TextView
@@ -16,19 +17,25 @@
         android:layout_marginTop="56dp"
         android:text="Boba Types"
         android:textColor="#705F5C"
+        android:textColorHint="#FA0000"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toEndOf="@+id/boba_switch"
         app:layout_constraintTop_toBottomOf="@+id/temperature_radioGroup" />
 
     <ImageView
         android:id="@+id/bubbleTeaView"
-        android:layout_width="360dp"
-        android:layout_height="77dp"
+        android:layout_width="410dp"
+        android:layout_height="86dp"
+        android:foregroundGravity="center"
+        android:paddingTop="10dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/original_flavor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/menupic" />
 
@@ -36,14 +43,13 @@
         android:id="@+id/favors3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
         android:text="Size"
         android:textColor="#705F5C"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/size_radioGroup"
-        app:layout_constraintEnd_toStartOf="@+id/size_radioGroup"
-        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bubbleTeaView" />
 
@@ -82,14 +88,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="40dp"
         android:text="Quantity(cups)"
         android:textColor="#705F5C"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boba_switch" />
+        app:layout_constraintTop_toBottomOf="@+id/boba_spinner" />
 
     <RadioGroup
         android:id="@+id/size_radioGroup"
@@ -99,14 +105,14 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/favors3"
         app:layout_constraintTop_toBottomOf="@+id/bubbleTeaView">
 
         <RadioButton
             android:id="@+id/regular_size_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#EF8E7D"
             android:checked="true"
             android:text="Regular Size"
             android:textColor="#EF8E7D" />
@@ -116,6 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
+            android:buttonTint="#EF8E7D"
             android:text="Large"
             android:textColor="#EF8E7D" />
 
@@ -136,6 +143,7 @@
             android:id="@+id/regular_sweetness_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#EF8E7D"
             android:checked="true"
             android:text="Regular Sweet"
             android:textColor="#EF8E7D" />
@@ -145,6 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
+            android:buttonTint="#EF8E7D"
             android:text="Very Sweet"
             android:textColor="#EF8E7D">
 
@@ -168,6 +177,7 @@
             android:id="@+id/cold_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#EF8E7D"
             android:checked="true"
             android:text="With Ice"
             android:textColor="#EF8E7D" />
@@ -177,6 +187,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
+            android:buttonTint="#EF8E7D"
             android:text="No Ice"
             android:textColor="#EF8E7D">
 
@@ -192,6 +203,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/boba_type_string"
+
         app:layout_constraintTop_toBottomOf="@+id/temperature_radioGroup" />
 
     <TextView
@@ -229,9 +241,12 @@
         android:layout_marginStart="8dp"
 
         android:layout_marginTop="24dp"
+        android:drawableTint="#EF8E7D"
         android:ems="10"
+        android:hint="Amount of Cups"
         android:inputType="number"
         android:textColor="#EF8E7D"
+        android:textColorHint="#A8A7A7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toEndOf="@+id/quantity"
@@ -263,7 +278,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favors6"
+        app:layout_constraintTop_toBottomOf="@+id/temperature_radioGroup"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

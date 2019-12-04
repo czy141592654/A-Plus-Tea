@@ -1,74 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FEF7E1"
     android:orientation="vertical"
     tools:context=".fragment.AccountScreen">
 
+
     <Button
-        android:id="@+id/update_button"
-        android:layout_width="332dp"
-        android:layout_height="66dp"
+        android:id="@+id/login_button"
+        android:layout_width="328dp"
+        android:layout_height="43dp"
         android:layout_gravity="center"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="#705F5C"
-        android:text="UPDATE Info"
+        android:text="lOGIN"
         android:textColor="#EF8E7D"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_order_info" />
+        app:layout_constraintTop_toBottomOf="@+id/account_screen_recyclerview" />
+
+    <Button
+        android:id="@+id/loggedAlready_buttonA"
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#705F5C"
+        android:text="LOGGED IN BEFORE"
+        android:textColor="#EF8E7D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
     <EditText
         android:id="@+id/name_editTextA"
-        android:layout_width="256dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Name here"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="#705F5C"
+        android:textColorHint="#E26D6D6D"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/guideline1" />
 
     <EditText
         android:id="@+id/phone_texteditA"
-        android:layout_width="257dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:ems="10"
+        android:hint="Phone here"
         android:inputType="phone"
-        android:text="Phone"
         android:textColor="#705F5C"
+        android:textColorHint="#E26D6D6D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_editTextA" />
 
     <EditText
         android:id="@+id/address_editTextA"
-        android:layout_width="255dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="Address here"
         android:inputType="text"
-        android:text="Address"
         android:textColor="#705F5C"
+        android:textColorHint="#E26D6D6D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_texteditA" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/account_screen_recyclerview"
-        android:layout_width="358dp"
-        android:layout_height="304dp"
-        android:layout_marginTop="12dp"
+    <Button
+        android:id="@+id/clearOrders"
+        android:layout_width="335dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#705F5C"
+        android:text="CLEAR ORDERS"
+        android:textColor="#EF8E7D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loggedAlready_buttonA" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/account_screen_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="226dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address_editTextA" />
+
+    <TextView
+        android:id="@+id/your_orders_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/modak"
+        android:text="Your Orders"
+        android:textColor="#EF8E7D"
+        android:textSize="30dp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_editTextA" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.0"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
