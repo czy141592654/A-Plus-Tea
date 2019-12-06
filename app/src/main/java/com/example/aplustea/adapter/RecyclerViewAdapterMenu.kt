@@ -35,8 +35,8 @@ class RecyclerViewAdapterMenu(
 
         fun bind(item: Item, clickListener: (Item) -> Unit) {
             viewItem.menuItem.setBackgroundResource(item.backGround)
-            viewItem.menuItem.text = item.name
-
+            //viewItem.menuItem.text = item.name
+            viewItem.menuItemText.text = item.name
             viewItem.setOnClickListener { clickListener(item) }
         }
     }

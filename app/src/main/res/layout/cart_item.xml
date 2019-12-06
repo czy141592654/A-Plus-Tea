@@ -2,18 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginBottom="20dp">
 
     <ImageView
         android:id="@+id/bubbleTeaCartView"
-        android:layout_width="138dp"
+        android:layout_width="139dp"
         android:layout_height="152dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="-1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="-6dp"
         app:srcCompat="@drawable/original_flavor" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_marginStart="139dp"
         android:layout_marginTop="1dp"
         android:text="TextView"
-        android:textColor="#FF0000" />
+        android:textColor="#EF8E7D" />
 
     <TextView
         android:id="@+id/personal_preference"
@@ -38,7 +38,7 @@
         android:layout_marginTop="23dp"
         android:layout_marginEnd="0dp"
         android:text="TextView"
-        android:textColor="#FF0000" />
+        android:textColor="#EF8E7D" />
 
     <TextView
         android:id="@+id/unit_price"
@@ -51,7 +51,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="1dp"
         android:text="TextView"
-        android:textColor="#FD0000" />
+        android:textColor="#EF8E7D" />
 
     <TextView
         android:id="@+id/quantity_text_cart"
@@ -63,5 +63,5 @@
         android:layout_marginStart="137dp"
         android:layout_marginTop="124dp"
         android:layout_marginEnd="5dp"
-        android:textColor="#FF0000" />
+        android:textColor="#EF8E7D" />
 </RelativeLayout>

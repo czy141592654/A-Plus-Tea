@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.lifecycle.Observer
@@ -218,6 +219,7 @@ class    AccountScreen : Fragment(), BubbleTeaViewModel.OnDataChangedListener {
             phone_texteditA.visibility = View.GONE
             clearOrders.visibility = View.VISIBLE
             your_orders_text.setText("All The Orders")
+            account_screen_recyclerview.layoutParams.height = (MATCH_PARENT / 3)
         } else if (bubbleTeaViewModel.isOwner.value == false) {
             viewAdapter.orderInfo_array = bubbleTeaViewModel.userOrderInfo.value!!
             viewAdapter.notifyDataSetChanged()
@@ -226,6 +228,11 @@ class    AccountScreen : Fragment(), BubbleTeaViewModel.OnDataChangedListener {
             address_editTextA.visibility = View.VISIBLE
             phone_texteditA.visibility = View.VISIBLE
             clearOrders.visibility = View.GONE
+            if(bubbleTeaViewModel.loggedAlreadyButtonClicked.value == true){
+                login_button.text = "LOG IN"
+                name_editTextA.visibility = View.INVISIBLE
+                address_editTextA.visibility = View.INVISIBLE
+            }
         }
     }
 

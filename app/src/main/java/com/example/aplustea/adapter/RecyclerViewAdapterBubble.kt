@@ -8,8 +8,10 @@ import com.example.aplustea.Bubble
 import com.example.aplustea.CartScreenItem
 import com.example.aplustea.R
 import kotlinx.android.synthetic.main.bubble_item.view.*
+import kotlinx.android.synthetic.main.bubble_item.view.menuItemText
 import kotlinx.android.synthetic.main.cart_item.view.*
 import kotlinx.android.synthetic.main.fragment_cart_screen.view.*
+import kotlinx.android.synthetic.main.menu_item.view.*
 
 class RecyclerViewAdapterBubble(
     var bubble_array: ArrayList<Bubble>
@@ -37,7 +39,7 @@ class RecyclerViewAdapterBubble(
 
         fun bind(item: Bubble) {
             viewItem.bubble.setBackgroundResource(item.image)
-            viewItem.bubble.setText(item.name)
+            viewItem.menuItemText.text = item.name
         }
     }
 }

@@ -12,10 +12,11 @@
     <EditText
         android:id="@+id/owner_code_editTextO"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/line"
         android:ems="10"
-        android:hint="Owner Code (Owner ONLY)"
+        android:hint=" Owner Code (Owner ONLY)"
         android:inputType="number"
         android:textColor="#705F5C"
         android:textColorHint="#777777"

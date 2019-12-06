@@ -22,9 +22,12 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:text="business hour: 12:00 - 9:00"
-                android:textColor="#F44336">
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/anouncements"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/text_border">
 
             </TextView>
 

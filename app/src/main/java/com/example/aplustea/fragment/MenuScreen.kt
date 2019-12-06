@@ -45,7 +45,7 @@ class MenuScreen : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        anouncements.text = "Business hour: 12:00 - 9:00" + "\n" + "You can call 774-2812577 to cancel the order" + "\n" + "Delivary only 5 minutes walk from Clark"
         // recycler view adapter for menu
         viewAdapterMenu = RecyclerViewAdapterMenu(itemArray) { menuitem:Item ->
             recyclerViewItemSelected(menuitem)
@@ -71,10 +71,13 @@ class MenuScreen : Fragment() {
         super.onResume()
         itemArray.clear()
         bubbleArray.clear()
+        anouncements.text = " Business hour: 12:00 - 9:00" + "\n" + " Contact: 774-2812577 " + "\n" + " Delivery On Clark Campus"
         itemArray.add(Item(R.drawable.original_flavor,"Original Flavor",3.0))
-        itemArray.add(Item(R.drawable.common_full_open_on_phone,"don't know",4.0))
-        bubbleArray.add(Bubble(R.drawable.bubble1,"Bubble 1"))
-        bubbleArray.add(Bubble(R.drawable.bubble2,"bubble 2"))
+        itemArray.add(Item(R.drawable.matcha,"Matcha",4.0))
+        itemArray.add(Item(R.drawable.vanilla,"Vanilla", 3.5))
+        bubbleArray.add(Bubble(R.drawable.boba_black,"Regular Boba"))
+        bubbleArray.add(Bubble(R.drawable.bursting_boba,"Bursting Boba"))
+
     }
 
     fun recyclerViewItemSelected(menuItem: Item){
