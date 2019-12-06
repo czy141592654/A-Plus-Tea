@@ -219,7 +219,6 @@ class    AccountScreen : Fragment(), BubbleTeaViewModel.OnDataChangedListener {
             phone_texteditA.visibility = View.GONE
             clearOrders.visibility = View.VISIBLE
             your_orders_text.setText("All The Orders")
-            account_screen_recyclerview.layoutParams.height = (MATCH_PARENT / 3)
         } else if (bubbleTeaViewModel.isOwner.value == false) {
             viewAdapter.orderInfo_array = bubbleTeaViewModel.userOrderInfo.value!!
             viewAdapter.notifyDataSetChanged()

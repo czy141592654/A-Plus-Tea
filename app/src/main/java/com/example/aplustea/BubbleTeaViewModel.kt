@@ -1,6 +1,7 @@
 package com.example.aplustea
 
 import android.app.Application
+import android.media.MediaPlayer
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -49,6 +50,8 @@ class BubbleTeaViewModel(application: Application) : AndroidViewModel(applicatio
 
     var loggedAlreadyButtonClicked = MutableLiveData<Boolean>()
     var placeOrderButtonClicked = MutableLiveData<Boolean>()
+
+
 
     init {
         bubbleTeaType.value = ""
@@ -133,6 +136,7 @@ class BubbleTeaViewModel(application: Application) : AndroidViewModel(applicatio
 
                 }
                 listener?.updateList()
+
             }
         })
     }
