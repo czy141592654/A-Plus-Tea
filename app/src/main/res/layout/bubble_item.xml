@@ -13,15 +13,14 @@
     </TextView>
 
     <TextView
+        android:id="@+id/menuItemText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textSize="30dp"
         android:fontFamily="@font/modak"
-        android:textColor="#DDA0DD"
-        android:id="@+id/menuItemText"
-        >
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="#F2CDC7"
+        android:textSize="30dp">
 
     </TextView>
 </LinearLayout>

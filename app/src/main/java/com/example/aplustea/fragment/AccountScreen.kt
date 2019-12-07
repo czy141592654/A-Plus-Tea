@@ -64,7 +64,9 @@ class    AccountScreen : Fragment(), BubbleTeaViewModel.OnDataChangedListener {
 
         // if the user is already logged in, then read their info
         if(bubbleTeaViewModel.loggedIn.value == true){
-            Toast.makeText(context, "Import Your Info To Register", Toast.LENGTH_LONG).show()
+            if(bubbleTeaViewModel.isOwner.value == false) {
+                Toast.makeText(context, "Import Your Info To Register", Toast.LENGTH_LONG).show()
+            }
         }
 
         if(bubbleTeaViewModel.loggedIn.value == true){

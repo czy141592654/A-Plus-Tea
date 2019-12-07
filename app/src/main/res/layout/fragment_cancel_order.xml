@@ -19,6 +19,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/modak"
+        android:gravity="center"
         android:text="Are you sure you want to place the order?"
         android:textColor="#EF8E7D"
         android:textSize="30sp" />

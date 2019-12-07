@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="12dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:buttonTint="#EF8E7D" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="303dp"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textColor="#FF0000"
+        android:textColor="#EF8E7D"
         android:textSize="30sp" />
 </LinearLayout>

@@ -7,9 +7,9 @@
         android:id="@+id/user_order_info_account_screen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="sans-serif"
         android:text="TextView"
         android:textColor="#EF8E7D"
-        android:fontFamily="@font/modak"
-        android:textSize="25dp"
-        android:layout_marginBottom="15dp"/>
+        android:textSize="25dp" />
 </LinearLayout>

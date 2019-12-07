@@ -21,13 +21,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/anouncements"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17dp"
                 android:layout_marginBottom="15dp"
-                android:id="@+id/anouncements"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/text_border">
+                android:background="@drawable/menu_screen_background"
+                android:gravity="center"
+                android:textColor="#705F5C"
+                android:textSize="17dp">
 
             </TextView>
 
