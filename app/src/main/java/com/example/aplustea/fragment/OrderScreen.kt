@@ -16,6 +16,7 @@ import com.example.aplustea.R
 import kotlinx.android.synthetic.main.fragment_order_screen.*
 import java.lang.Exception
 import android.text.TextWatcher
+import android.widget.AdapterView
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.aplustea.CartScreenItem
@@ -86,8 +87,11 @@ class OrderScreen : Fragment() {
 
         // adapter for spinner
         val pearlsAdapter =
-            ArrayAdapter(context!!, android.R.layout.simple_spinner_dropdown_item, pearlsTypes)
+            ArrayAdapter(context!!, R.layout.spinner_item, pearlsTypes)
         boba_spinner.adapter = pearlsAdapter
+
+
+        var onItemSelectedListener:AdapterView.OnItemSelectedListener
 
 
         // show the total price of the current type bubble tea

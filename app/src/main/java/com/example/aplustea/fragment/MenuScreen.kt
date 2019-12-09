@@ -31,6 +31,7 @@ class MenuScreen : Fragment() {
     lateinit var viewAdapterBubble: RecyclerViewAdapterBubble
     lateinit var viewManagerBubble: RecyclerView.LayoutManager
     lateinit var bubbleTeaViewModel:BubbleTeaViewModel
+    //var loseSound: MediaPlayer = MediaPlayer.create(con, R.raw.losing)
 
 
     override fun onCreateView(

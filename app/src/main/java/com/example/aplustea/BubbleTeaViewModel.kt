@@ -36,8 +36,10 @@ class BubbleTeaViewModel(application: Application) : AndroidViewModel(applicatio
 
     var loggedIn = MutableLiveData<Boolean>()
     var firebase = MutableLiveData<DatabaseReference>()
+    var firebase2 = MutableLiveData<DatabaseReference>()
 
     val database = BubbleDB.getDBObject(getApplication<Application>().applicationContext)
+
 
     var allOrderInfo = MutableLiveData<ArrayList<UserOrOwnerInfo>>()
     var userOrderInfo = MutableLiveData<ArrayList<UserOrOwnerInfo>>()
@@ -79,6 +81,7 @@ class BubbleTeaViewModel(application: Application) : AndroidViewModel(applicatio
         getNameFromFirebase.value = ""
         loggedAlreadyButtonClicked.value = false
         placeOrderButtonClicked.value = false
+        firebase2.value = FirebaseDatabase.getInstance().reference
 
 
 

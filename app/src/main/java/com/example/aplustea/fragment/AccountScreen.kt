@@ -1,6 +1,8 @@
 package com.example.aplustea.fragment
 
 
+import android.app.Application
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,12 +16,12 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aplustea.Bubble
-import com.example.aplustea.BubbleTeaViewModel
-import com.example.aplustea.PersonalInfo
-import com.example.aplustea.R
+import com.example.aplustea.*
 import com.example.aplustea.adapter.RecyclerViewAdapterAccountScreen
 import com.example.aplustea.adapter.RecyclerViewAdapterCartScreen
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.bubble_item.*
 import kotlinx.android.synthetic.main.fragment_account_screen.*
 import kotlinx.android.synthetic.main.fragment_account_screen.login_button
@@ -47,6 +49,8 @@ class    AccountScreen : Fragment(), BubbleTeaViewModel.OnDataChangedListener {
     lateinit var bubbleTeaViewModel: BubbleTeaViewModel
     lateinit var viewAdapter: RecyclerViewAdapterAccountScreen
     lateinit var viewManager: RecyclerView.LayoutManager
+    lateinit var mediaPlayer: MediaPlayer
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +61,11 @@ class    AccountScreen : Fragment(), BubbleTeaViewModel.OnDataChangedListener {
         } ?: throw Exception("activity invalid")
         bubbleTeaViewModel.listener = this
         // Inflate the layout for this fragment
+        //////////////////////////////////////////////////////////////////////////
+        mediaPlayer = MediaPlayer.create(context, R.raw.spinning)
+        ///////////////////////////////////////////////////////////////////////////
         return inflater.inflate(R.layout.fragment_account_screen, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -221,6 +229,18 @@ class    AccountScreen : Fragment(), BubbleTeaViewModel.OnDataChangedListener {
             phone_texteditA.visibility = View.GONE
             clearOrders.visibility = View.VISIBLE
             your_orders_text.setText("All The Orders")
+
+            bubbleTeaViewModel.firebase2.value?.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
+
+                override fun onDataChange(p0: DataSnapshot) {
+                    if(bubbleTeaViewModel.isOwner.value == true) {
+                        mediaPlayer.start()
+                    }
+                }
+            })
+
         } else if (bubbleTeaViewModel.isOwner.value == false) {
             viewAdapter.orderInfo_array = bubbleTeaViewModel.userOrderInfo.value!!
             viewAdapter.notifyDataSetChanged()
